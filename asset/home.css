@@ -1,0 +1,22 @@
+.opening{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 6.5em auto;
+}
+.masuk{
+    background-color: black;
+    width: 800px;
+    height:200px ;
+    margin: auto;
+    margin-top: 50px;
+    padding: 10px;
+    padding-top: 50px;
+    text-align: center;
+}
+
+#id{
+    height: 40px;
+    width: 300px;
+    border-radius: 4px;
+    border: solid 1px #888;
+}
