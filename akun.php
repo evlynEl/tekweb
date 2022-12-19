@@ -15,8 +15,8 @@ $fetch_data = $con->prepare($fetch_data);
 $fetch_data->execute([ $login_user ]);
 
 
-// if ($fetch_data->rowCount() == 0)
-//     header('location: logout.php');
+if ($fetch_data->rowCount() == 0)
+    header('location: logout.php');
 
 
 $fetch_data = $fetch_data->fetch();
@@ -39,6 +39,12 @@ $fetch_data = $fetch_data->fetch();
         
         <!--gambar-->
         <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
+
+        <style>
+            .account{
+                display: flex;
+            }
+        </style>
     </head>
     <body>
         <div class="full-site bg-dark">
@@ -79,17 +85,20 @@ $fetch_data = $fetch_data->fetch();
                     </nav>
                 </div>
                 <div class="clear-head"></div>
-
-                <div class="col-4 content text-white">
+            </div>
+            <div class="account py-3">
+                <div class="col-3">
                     <img src="https://assets.website-files.com/5e51c674258ffe10d286d30a/5e53534d67293a6fe95a9616_peep-22.svg" class="card-img-top" style="max-width: 200px;">
+                </div>
+                <div class="col-md-5 py-3 text-white">
                     <h4>Account information</h4>
                     <h6>Username</h6>
                         <p><?=htmlspecialchars($fetch_data['username'])?></p>
                     <h6>Email</h6>
                         <p><?=htmlspecialchars($fetch_data['email'])?></p>
+                    <a href="logOut.php" class="btn btn-light">Log Out</button></a>
                 </div>
-            </div>
-        </div>
+            </div>    
         </div>
     </body>
 </html>

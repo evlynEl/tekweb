@@ -65,6 +65,13 @@ if (isset($_POST['register']))
 
                 <div class="masuk text-white" style="text-align: center;">
                     <h1>Sign Up</h1><br/><br/>
+                    <?php
+                    if (isset($_GET['msg']) && $_GET['msg'] == 1)
+                            echo 'Berhasil melakukan pendaftaran.<br/><br/>';
+                        ?>
+
+                        <?=isset($msg) ? $msg.'<br/>' : '' ?>
+
                     <form method="POST">
                         Userame : <input name="username" type="text" placeholder="Username"><br/><br/>
                         Email : <input name="email" type="email" placeholder="Email"><br/><br/>
@@ -72,14 +79,8 @@ if (isset($_POST['register']))
                         Re-Type Password : <input name="confirm" type="password" placeholder="Re-Type Password"><br/><br/>
                         <button class="btn btn-light" name="register">Submit</button><br/><br/>
 
-                        <?php
-
-                        if (isset($_GET['msg']) && $_GET['msg'] == 1)
-                            echo 'Berhasil melakukan pendaftaran.<br/><br/>';
+                    
                         
-                        ?>
-
-                        <?=isset($msg) ? $msg.'<br/>' : '' ?>
                         <?= "Kembali ke halaman <a href='logIn.php' class='btn btn-light'>Log In</button></a>"?>
 
                     </form>
