@@ -28,8 +28,40 @@ if(isset($_POST['proses'])){
     $file_name = $_FILES['NamaFile']['name'];
     move_uploaded_file($_FILES['NamaFile']['tmp_name'],$direktori.$file_name);
     mysqli_query($koneksi, "insert into dokumen set file='$file_name'");
-    
+
+    // pengecekan ketika error terjadi dan menampilkan persan errornya
+    if ($_FILES["NamaFile"]["error"] !== UPLOAD_ERR_OK) {
+
+        switch ($_FILES["NamaFile"]["error"]) {
+            case UPLOAD_ERR_PARTIAL:
+                exit('File only partially uploaded');
+                break;
+            case UPLOAD_ERR_NO_FILE:
+                exit('No file was uploaded');
+                break;
+            case UPLOAD_ERR_EXTENSION:
+                exit('File upload stopped by a PHP extension');
+                break;
+            case UPLOAD_ERR_FORM_SIZE:
+                exit('File exceeds MAX_FILE_SIZE in the HTML form');
+                break;
+            case UPLOAD_ERR_INI_SIZE:
+                exit('File exceeds upload_max_filesize in php.ini');
+                break;
+            case UPLOAD_ERR_NO_TMP_DIR:
+                exit('Temporary folder not found');
+                break;
+            case UPLOAD_ERR_CANT_WRITE:
+                exit('Failed to write file');
+                break;
+            default:
+                exit('Unknown upload error');
+                break;
+        }
+    }
+    // Pesan yang muncul ketika upload berhasil
     echo "<b>File berhasil diupload";
+
 }
 ?>
 
