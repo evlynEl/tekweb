@@ -21,6 +21,16 @@ $fetch_data->execute([ $login_user ]);
 
 $fetch_data = $fetch_data->fetch();
 
+$koneksi = mysqli_connect("localhost","root","","db");
+
+if(isset($_POST['proses'])){
+    $direktori = "berkas/";
+    $file_name = $_FILES['NamaFile']['name'];
+    move_uploaded_file($_FILES['NamaFile']['tmp_name'],$direktori.$file_name);
+    mysqli_query($koneksi, "insert into dokumen set file='$file_name'");
+    
+    echo "<b>File berhasil diupload";
+}
 ?>
 
 <!DOCTYPE html>
@@ -35,9 +45,28 @@ $fetch_data = $fetch_data->fetch();
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-        
+        <script src="https://browser.sentry-cdn.com/7.27.0/bundle.min.js"></script>
+
         <!--gambar-->
         <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
+        <!-- CSS untuk upload file buttonnya -->
+        <style>
+            label{
+                display: inline-block;
+                background-color: indigo;
+                color: white;
+                padding: 0.5rem;
+                font-family: sans-serif;
+                border-radius: 0.3rem;
+                cursor: pointer;
+                margin-top: 1rem;
+            }
+
+            #file-chosen{
+                margin-left: 0.3rem;
+                font-family: sans-serif;
+            }
+        </style>
     </head>
     <body>
         <div class="full-site bg-dark">
@@ -83,7 +112,17 @@ $fetch_data = $fetch_data->fetch();
                     <h3>Publish to the world</h3>
                     <p>Research paper, article, document, etc</p>
                     <div class="box bg-dark" style="border: solid 1px white; border-style:dashed; width:500px; height:150px; margin: auto;text-align:center">
-                        <a href="./upload.php" class="btn btn-light btn-outline-dark" style="position: absolute; top:50%;left:50%; transform: translate(-50%, -300%);">Select Documents</a>
+                        <!-- <a href="./upload.php" class="btn btn-light btn-outline-dark" style="position: absolute; top:50%;left:50%; transform: translate(-50%, -300%);">Select Documents</a> -->
+
+                        <!-- Form terbaru -> desain pakai CSS dan langsung tampil nama file yg akan diupload -->
+                        <form action="" method="POST" enctype="multipart/form-data">
+                        <input type="file" id="upload-btn" name="NamaFile" hidden/>
+                        <label for="upload-btn">Select Documents</label>
+                        <br>
+                        <span id="file-chosen">No file chosen</span>
+                        <br>
+                        <input type="submit" name="proses" value="Upload">
+                        </form>
                     </div>
                 </div>
             </div>
@@ -91,5 +130,14 @@ $fetch_data = $fetch_data->fetch();
         </div>
     </body>
 </html>
-hihi
+
+<script>
+    const actualBtn = document.getElementById('upload-btn');
+
+    const fileChosen = document.getElementById('file-chosen');
+
+    actualBtn.addEventListener('change', function(){
+        fileChosen.textContent = this.files[0].name
+    })
+</script>
 
