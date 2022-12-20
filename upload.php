@@ -181,8 +181,8 @@ if(isset($_POST['proses'])){
                     </div>
                     <br />
                     <div class="d-grid gap-2 col-3 mx-auto">
-                        <button class="btn btn-outline-light" type="submit">Upload</button>
-                        <input type="submit" name="proses" value="Upload">
+                        <!-- <button class="btn btn-outline-light" type="submit">Upload</button> -->
+                        <input type="submit" name="proses" value="Upload" class="btn btn-outline-light">
                     </div>
                 </div>
             </div>
