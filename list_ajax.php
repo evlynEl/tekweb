@@ -20,6 +20,7 @@ if (isset($_POST['get_ajax']))
             echo '<tr>';
             echo '<td>'.$document['penulis'].'</td>';
             echo '<td>'.$document['judul'].'</td>';
+            echo '<td>'.$document['file'].'</td>';
             echo '<td>'.$document['rating'].'</td>';
             echo '</tr>';
         }
@@ -31,13 +32,15 @@ if (isset($_POST['tambah_doc']))
     $penulis = $_POST['penulis'];
     $judul = $_POST['judul'];
     $kategori_id = $_POST['kategori'];
+    $file = $_POST['proses'];
 
-    $insert_data = "INSERT INTO `documents` SET penulis = ?, judul = ?, kategori_id = ?";
+    $insert_data = "INSERT INTO `documents` SET penulis = ?, judul = ?, kategori_id = ?, file = ?";
     $insert_data = $con->prepare($insert_data);
     $insert_data->execute([
         $penulis,
         $judul,
-        $kategori_id
+        $kategori_id,
+        $file
     ]);
 
 

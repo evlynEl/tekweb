@@ -27,7 +27,7 @@ if(isset($_POST['proses'])){
     $direktori = "berkas/";
     $file_name = $_FILES['NamaFile']['name'];
     move_uploaded_file($_FILES['NamaFile']['tmp_name'],$direktori.$file_name);
-    mysqli_query($koneksi, "insert into dokumen set file='$file_name'");
+    mysqli_query($koneksi, "insert into documents set file='$file_name'");
 
     // pengecekan ketika error terjadi dan menampilkan persan errornya
     if ($_FILES["NamaFile"]["error"] !== UPLOAD_ERR_OK) {
@@ -60,7 +60,7 @@ if(isset($_POST['proses'])){
         }
     }
     // Pesan yang muncul ketika upload berhasil
-    echo "<b>File berhasil diupload";
+    $msg = "<b>File berhasil diupload</b>";
 
 }
 ?>
@@ -115,24 +115,12 @@ if(isset($_POST['proses'])){
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="./home2.php">Home</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle active " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                                </li>
+                                </li>                                
                             </ul>
                             <form class="d-flex px-3" role="search">
                                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                                 <button class="btn btn-outline-dark" type="submit">Search</button>
                             </form>
-                            <button class="btn btn-outline-dark" type="submit">Upload</button>
                             </div>
                             <a class="navbar-brand px-3" href="./akun.php"><?=htmlspecialchars($fetch_data['username'])?></a>
                         </div>
@@ -144,8 +132,10 @@ if(isset($_POST['proses'])){
                     <h3>Publish to the world</h3>
                     <p>Research paper, article, document, etc</p>
 
+                    <?=isset($msg) ? '<div class="alert alert-success">'.$msg.'</div>' : ''?>
+
                     <div class="col-md-4" style="margin: auto;text-align:center">
-                        <form method="post" id="form-tambah">
+                        <form method="post" id="form-tambah" enctype="multipart/form-data">
                             <p>Penulis</p>
                                 <input type="text" class="form-control" id="penulis" name="penulis" placeholder="Penulis"><br />
                             <p>Judul</p>
@@ -165,7 +155,13 @@ if(isset($_POST['proses'])){
                                     <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
 
                                     <?php endwhile ?>
-                                </select>                                
+                                </select> 
+                            <!--upload file-->
+                            <input type="file" id="upload-btn" name="NamaFile" hidden/>
+                            <label for="upload-btn">Select Documents</label>
+                            <br>
+                            <span id="file-chosen">No file chosen</span>
+                            <br>                               
                         </form>
                     </div>
                     <br />
@@ -173,19 +169,20 @@ if(isset($_POST['proses'])){
                        
 
                         <!-- Form terbaru -> desain pakai CSS dan langsung tampil nama file yg akan diupload -->
-                        <form action="" method="POST" enctype="multipart/form-data">                            
+                        <!-- <form action="" method="POST" enctype="multipart/form-data">                            
                             <input type="file" id="upload-btn" name="NamaFile" hidden/>
                             <label for="upload-btn">Select Documents</label>
-                        <br>
-                        <span id="file-chosen">No file chosen</span>
-                        <br>
-                        <input type="submit" name="proses" value="Upload">
-                        </form>
+                            <br>
+                            <span id="file-chosen">No file chosen</span>
+                            <br>
+                        
+                        </form> -->
                         
                     </div>
                     <br />
                     <div class="d-grid gap-2 col-3 mx-auto">
-                        <button class="btn btn-light" type="button">Upload</button>
+                        <button class="btn btn-outline-light" type="submit">Upload</button>
+                        <input type="submit" name="proses" value="Upload">
                     </div>
                 </div>
             </div>

@@ -114,8 +114,9 @@ $fetch_data = $fetch_data->fetch();
                         <table class="table table-bordered table-striped table-secondary">
                             <thead class="bg-dark ">
                                 <tr>
-                                    <td>Penulis</td>
+                                    <td >Penulis</td>
                                     <td>Judul</td>
+                                    <td>File</td>
                                     <td>Rating</td>
                                 </tr>
                             </thead>

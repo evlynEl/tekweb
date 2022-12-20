@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2022 at 03:42 PM
+-- Generation Time: Dec 20, 2022 at 03:00 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -28,9 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `documents` (
-  `id` int(11) NOT NULL,
+  `id` int(3) NOT NULL,
   `penulis` varchar(50) NOT NULL,
   `judul` varchar(80) NOT NULL,
+  `file` varchar(50) NOT NULL,
   `kategori_id` int(2) NOT NULL,
   `rating` int(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -39,10 +40,12 @@ CREATE TABLE `documents` (
 -- Dumping data for table `documents`
 --
 
-INSERT INTO `documents` (`id`, `penulis`, `judul`, `kategori_id`, `rating`) VALUES
-(1, 'Alexander Chandra', 'Putih Abu - Abu', 10, 6),
-(2, 'J.K. Rowling', 'Hery Potah', 10, 9),
-(3, 'Andreas Gunawan', 'Menanam Hidroponik Di Gedung Bertingkat Dengan Pengaturan Ruang Segi Enam', 20, 7);
+INSERT INTO `documents` (`id`, `penulis`, `judul`, `file`, `kategori_id`, `rating`) VALUES
+(1, 'Alexander Chandra', 'Putih Abu - Abu', '', 10, 6),
+(2, 'J.K. Rowling', 'Hery Potah', '', 10, 9),
+(3, 'Andreas Gunawan', 'Menanam Hidroponik Di Gedung Bertingkat Dengan Pengaturan Ruang Segi Enam', '', 20, 7),
+(4, 'Anthony Gunawan', 'Ini Kategori Skripsi', '', 30, 6),
+(5, '', '', 'Smart_Thinking_Skills.pdf', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -62,7 +65,8 @@ CREATE TABLE `kategori` (
 INSERT INTO `kategori` (`category_id`, `category_name`) VALUES
 (10, 'Novel'),
 (20, 'Makalah'),
-(30, 'Skripsi');
+(30, 'Skripsi'),
+(40, 'E-Book');
 
 -- --------------------------------------------------------
 
@@ -117,7 +121,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
