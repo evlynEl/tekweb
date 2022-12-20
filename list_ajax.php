@@ -25,4 +25,25 @@ if (isset($_POST['get_ajax']))
         }
     }
 }
+
+if (isset($_POST['tambah_doc']))
+{
+    $penulis = $_POST['penulis'];
+    $judul = $_POST['judul'];
+    $kategori_id = $_POST['kategori'];
+
+    $insert_data = "INSERT INTO `documents` SET penulis = ?, judul = ?, kategori_id = ?";
+    $insert_data = $con->prepare($insert_data);
+    $insert_data->execute([
+        $penulis,
+        $judul,
+        $kategori_id
+    ]);
+
+
+    if (!$insert_data)
+        echo -1;
+    else
+        echo 'sukses';
+}
 ?>

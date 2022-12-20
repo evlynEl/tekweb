@@ -21,7 +21,7 @@ $fetch_data->execute([ $login_user ]);
 
 $fetch_data = $fetch_data->fetch();
 
-$koneksi = mysqli_connect("localhost","root","","db");
+$koneksi = mysqli_connect("localhost","root","admin","db");
 
 if(isset($_POST['proses'])){
     $direktori = "berkas/";
@@ -143,18 +143,49 @@ if(isset($_POST['proses'])){
                 <div class="my-5 text-white bg-dark" style="margin: auto;text-align:center;height:auto;">
                     <h3>Publish to the world</h3>
                     <p>Research paper, article, document, etc</p>
+
+                    <div class="col-md-4" style="margin: auto;text-align:center">
+                        <form method="post" id="form-tambah">
+                            <p>Penulis</p>
+                                <input type="text" class="form-control" id="penulis" name="penulis" placeholder="Penulis"><br />
+                            <p>Judul</p>
+                                <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul"><br />
+                            <p>Kategori</p>
+                                <select id="kategori" class="form-select">
+                                    <option value="">-- Pilih kategori: --</option>
+                                        
+                                    <?php 
+                                    
+                                    $list_kategori = "SELECT * FROM `kategori` ORDER BY category_name ASC";
+                                    $list_kategori = $con->prepare($list_kategori);
+                                    $list_kategori->execute();
+                                    
+                                    while($kategori = $list_kategori->fetch()): ?>
+
+                                    <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
+
+                                    <?php endwhile ?>
+                                </select>                                
+                        </form>
+                    </div>
+                    <br />
                     <div class="box bg-dark" style="border: solid 1px white; border-style:dashed; width:500px; height:150px; margin: auto;text-align:center">
-                        <!-- <a href="./upload.php" class="btn btn-light btn-outline-dark" style="position: absolute; top:50%;left:50%; transform: translate(-50%, -300%);">Select Documents</a> -->
+                       
 
                         <!-- Form terbaru -> desain pakai CSS dan langsung tampil nama file yg akan diupload -->
-                        <form action="" method="POST" enctype="multipart/form-data">
-                        <input type="file" id="upload-btn" name="NamaFile" hidden/>
-                        <label for="upload-btn">Select Documents</label>
+                        <form action="" method="POST" enctype="multipart/form-data">                            
+                            <input type="file" id="upload-btn" name="NamaFile" hidden/>
+                            <label for="upload-btn">Select Documents</label>
                         <br>
                         <span id="file-chosen">No file chosen</span>
                         <br>
                         <input type="submit" name="proses" value="Upload">
                         </form>
+                        
+                    </div>
+                    <br />
+                    <div class="d-grid gap-2 col-3 mx-auto">
+                        <button class="btn btn-light" type="button">Upload</button>
                     </div>
                 </div>
             </div>
@@ -171,5 +202,47 @@ if(isset($_POST['proses'])){
     actualBtn.addEventListener('change', function(){
         fileChosen.textContent = this.files[0].name
     })
+
+
+    $(function() 
+        {
+            $('#kategori').change(function(e) 
+            {
+                const id = $(this).val()
+                showDataCategory(id)
+            })
+
+
+            $("#form-tambah").submit(function(e) 
+            {
+                e.preventDefault();
+
+                const formData = $(this).serialize();
+                const id = $('#kategori').val()
+
+                $.ajax({
+                    url: 'list_ajax.php',
+                    type: 'POST',
+                    data: formData + '&kategori=' + id + '&tambah_doc=true',
+                    success: function(output) 
+                    {
+                        if (output == -1)
+                            alert('Gagal diinput')
+
+                        else 
+                        {
+                            alert("Data berhasil diinput")
+                            showDataCategory(id)
+
+                            $("#form-tambah").trigger('reset')
+                        }
+                    },
+                    error: function(e) 
+                    {
+                        alert('Terjadi kesalahan saat load data');
+                    }
+                })
+            })
+        })
 </script>
 
