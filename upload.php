@@ -165,9 +165,6 @@ if(isset($_POST['proses'])){
                         </form>
                     </div>
                     <br />
-                    <div class="box bg-dark" style="border: solid 1px white; border-style:dashed; width:500px; height:150px; margin: auto;text-align:center">
-                       
-
                         <!-- Form terbaru -> desain pakai CSS dan langsung tampil nama file yg akan diupload -->
                         <!-- <form action="" method="POST" enctype="multipart/form-data">                            
                             <input type="file" id="upload-btn" name="NamaFile" hidden/>
@@ -177,8 +174,7 @@ if(isset($_POST['proses'])){
                             <br>
                         
                         </form> -->
-                        
-                    </div>
+                    
                     <br />
                     <div class="d-grid gap-2 col-3 mx-auto">
                         <!-- <button class="btn btn-outline-light" type="submit">Upload</button> -->
