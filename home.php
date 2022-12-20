@@ -1,3 +1,9 @@
+<?php
+
+include 'config.php';
+
+?>
+
 <!DOCTYPE html>
 <html>
   <!--PAGE SEBELUM LOG IN-->
@@ -36,16 +42,22 @@
                       <li class="nav-item">
                         <a class="nav-link active" href="logIn.php">Log In</a>
                       </li>
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><hr class="dropdown-divider"></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                      <li class="nav-item">
+                        <select id="kategori" class="form-select bg-light" style="border: 0;">
+                          <option value="">Kategori</option>
+                                            
+                          <?php 
+                                        
+                          $list_kategori = "SELECT * FROM `kategori` ORDER BY category_name ASC";
+                          $list_kategori = $con->prepare($list_kategori);
+                          $list_kategori->execute();
+                                            
+                          while($kategori = $list_kategori->fetch()): ?>
+
+                          <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
+
+                          <?php endwhile ?>
+                        </select>
                       </li>
                     </ul>
                     <form class="d-flex px-3" role="search">
@@ -53,11 +65,13 @@
                       <button class="btn btn-outline-dark" type="submit">Search</button>
                     </form>
                   </div>
-                  <a class="navbar-brand">GUEST</a>
-                </div>
+                  <a class="navbar-brand px-3" href="#">GUEST</a>
+                 </div>
                 </nav>
               </div>
               <div class="clear-head"></div>
+
+
               <div class="opening">
                 <div class="col-6 p-0 text-white" style="text-align: center;">
                   <h1>Welcome!</h1>
@@ -71,6 +85,22 @@
                   </div>
                 </div>
               </div>
+
+
+              <div class="col-md-12">
+                <table class="table table-bordered table-striped table-secondary">
+                  <thead class="bg-dark ">
+                    <tr>
+                      <td>Penulis</td>
+                      <td>Judul</td>
+                       <td>Rating</td>
+                    </tr>
+                  </thead>
+                  <tbody id="output-ajax">
+
+                  </tbody>
+                </table>
+              </div>
                 <!-- <div class="col-6 p-0 text-white" style="text-align: center;">
                   <h1>Welcome!</h1>
                   <h2>"book is a window to the world"</h2>
@@ -81,11 +111,40 @@
                     <img src="./asset/pic/112-book-morph-flat.gif" class="document" style="max-width: 200px;">
                     <img src="./asset/pic/56-document-lineal.gif" class="document" style="max-width: 200px;">
                   </div> -->
-              </div>
+              
             </div>
           </div>
         </div>
     </body>
 </html>
 
+<script>
+        $(function() 
+        {
+            const showDataCategory = (id) => 
+            {
+                $.ajax({
+                    url: 'list_ajax.php',
+                    type: 'POST',
+                    data: 'kategori=' + id + '&get_ajax=true',
+                    success: function(output) 
+                    {
+                        if (output == -1)
+                            alert('Tidak ada data yang ditampilkan')
 
+                        else
+                            $('#output-ajax').html(output)
+                    },
+                    error: function(e) {
+                        alert('Terjadi kesalahan saat load data');
+                    }
+                })
+            }
+
+            $('#kategori').change(function(e) 
+            {
+                const id = $(this).val()
+                showDataCategory(id)
+            })
+        })
+</script>

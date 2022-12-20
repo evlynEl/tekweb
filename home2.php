@@ -54,6 +54,7 @@ $fetch_data = $fetch_data->fetch();
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Find what you're looking here</title>
+
         <link rel="stylesheet" href="/projek/asset/home.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -74,33 +75,33 @@ $fetch_data = $fetch_data->fetch();
                                 <span class="navbar-toggler-icon"></span>
                                 </button>
                                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                    <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="home2.php">Home</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <select id="kategori" class="form-select bg-light" style="border: 0;">
-                                            <option value="">Kategori</option>
+                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                        <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="home2.php">Home</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <select id="kategori" class="form-select bg-light" style="border: 0;">
+                                                <option value="">Kategori</option>
+                                                
+                                                <?php 
                                             
-                                            <?php 
-                                        
-                                            $list_kategori = "SELECT * FROM `kategori` ORDER BY category_id ASC";
-                                            $list_kategori = $con->prepare($list_kategori);
-                                            $list_kategori->execute();
-                                            
-                                            while($kategori = $list_kategori->fetch()): ?>
+                                                $list_kategori = "SELECT * FROM `kategori` ORDER BY category_name ASC";
+                                                $list_kategori = $con->prepare($list_kategori);
+                                                $list_kategori->execute();
+                                                
+                                                while($kategori = $list_kategori->fetch()): ?>
 
-                                            <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
+                                                <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
 
-                                            <?php endwhile ?>
-                                        </select>
-                                    </li>
-                                </ul>
-                                <form class="d-flex px-3" role="search">
-                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                    <button class="btn btn-outline-dark" type="submit">Search</button>
-                                </form>
-                                <a href="upload.php" class="btn btn-light btn-outline-dark">Upload</a>
+                                                <?php endwhile ?>
+                                            </select>
+                                        </li>
+                                    </ul>
+                                    <form class="d-flex px-3" role="search">
+                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                                    </form>
+                                    <a href="upload.php" class="btn btn-light btn-outline-dark">Upload</a>
                                 </div>
                                 <a class="navbar-brand px-3" href="./akun.php"><?=htmlspecialchars($fetch_data['username'])?></a>
                             </div>
@@ -108,13 +109,13 @@ $fetch_data = $fetch_data->fetch();
                     </div>
                     <div class="clear-head"></div>
 
-                    <div class="col-md-12">
-                        <table class="table table-bordered table-striped text-white">
+                    <div class="col-md-12 py-3">
+                        <h3 class="text-white">Daftar Dokumen</h3>
+                        <table class="table table-bordered table-striped table-secondary">
                             <thead class="bg-dark ">
                                 <tr>
                                     <td>Penulis</td>
                                     <td>Judul</td>
-                                    <td>Kategori</td>
                                     <td>Rating</td>
                                 </tr>
                             </thead>
@@ -143,6 +144,27 @@ $fetch_data = $fetch_data->fetch();
                     {
                         if (output == -1)
                             alert('Tidak ada data yang ditampilkan')
+                        // <?php
+                        //     // tampilin semua  data 
+                        //     $check_data = "SELECT penulis, judul, rating FROM `documents` ORDER BY judul ASC";
+                        //     $check_data = $con->prepare($check_data);
+                        //     $check_data->execute();
+
+                        //     if ($check_data->rowCount() == 0)
+                        //         echo -1;
+                        //     else
+                        //     {
+                        //         while($document = $check_data->fetch())
+                        //         {
+                        //             echo '<tr>';
+                        //             echo '<td>'.$document['penulis'].'</td>';
+                        //             echo '<td>'.$document['judul'].'</td>';
+                        //             echo '<td>'.$document['rating'].'</td>';
+                        //             echo '</tr>';
+                        //         }
+                        //     }
+                        // ?>
+                    
 
                         else
                             $('#output-ajax').html(output)
@@ -159,39 +181,7 @@ $fetch_data = $fetch_data->fetch();
                 const id = $(this).val()
                 showDataCategory(id)
             })
-
-
-            $("#form-tambah").submit(function(e) 
-            {
-                e.preventDefault();
-
-                const formData = $(this).serialize();
-                const id = $('#kategori').val()
-
-                $.ajax({
-                    url: 'list_ajax.php',
-                    type: 'POST',
-                    data: formData + '&kategori=' + id + '&tambah_barang=true',
-                    success: function(output) 
-                    {
-                        if (output == -1)
-                            alert('Gagal diinput')
-
-                        else 
-                        {
-                            alert("Data berhasil diinput")
-                            showDataCategory(id)
-
-                            $("#form-tambah").trigger('reset')
-                        }
-                    },
-                    error: function(e) 
-                    {
-                        alert('Terjadi kesalahan saat load data');
-                    }
-                })
-            })
         })
-    </script>
+</script>
 
 
