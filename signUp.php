@@ -45,6 +45,7 @@ if (isset($_POST['register']))
 }
 ?>
 
+<!DOCTYPE html>
 <html>
 <head>
     <title>Sign Up</title>
@@ -90,7 +91,7 @@ if (isset($_POST['register']))
                     Email : <input name="email" type="email" placeholder="Email"><br/><br/>
                     Password : <input name="password" type="password" placeholder="Password"><br/><br/>
                     Re-Type Password : <input name="confirm" type="password" placeholder="Re-Type Password"><br/><br/>
-                    <button class="btn btn-light" name="register">Sign Up</button><br/><br/>
+                    <button class="btn btn-light" name="register">Sign Up <i class="fa-solid fa-arrow-right"></i></button><br/><br/>
                 </form>
                 <a href="home.php"><button class="btn">Back</button></a>
             </div>
