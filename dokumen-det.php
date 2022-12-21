@@ -49,72 +49,86 @@ $fetch_data = $fetch_data->fetch();
 <!DOCTYPE html>
 <html>
   <!--PAGE SETELAH LOG IN-->
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Find what you're looking here</title>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find what you're looking here</title>
 
-        <link rel="stylesheet" href="/projek/asset/home.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-        
-        <!--gambar-->
-        <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
-    </head>
-    <body>
-        <div class="full-site bg-dark">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 py-3">
-                        <nav class="navbar navbar-expand-lg bg-light">
-                            <div class="container-fluid">
-                                <a class="navbar-brand">LOGO</a>
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                        <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="home2.php">Home</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <select id="kategori" class="form-select bg-light" style="border: 0;">
-                                                <option value="">Kategori</option>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <!-- CSS Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Animate CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Preloader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <!--gambar-->
+    <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader"></div>
+
+    <!-- Navbar -->
+    <div class="container-fluid">
+        <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
+            <a class="navbar-brand">LOGO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mt-3 mx-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-5">
+                        <a class="nav-link text-black active" aria-current="page" href="home2.php">Home</a>
+                    </li>
+                    <li class="nav-item mx-5">
+                        <a class="nav-link text-black active" href="aboutUs.php">About Us</a>
+                    </li>
+                    <li class="nav-item mx-5">
+                        <select id="kategori" class="form-select" style="border: 0;">
+                            <option value="">Kategori</option>
                                                 
-                                                <?php 
+                            <?php 
                                             
-                                                $list_kategori = "SELECT * FROM `kategori` ORDER BY category_name ASC";
-                                                $list_kategori = $con->prepare($list_kategori);
-                                                $list_kategori->execute();
+                            $list_kategori = "SELECT * FROM `kategori` ORDER BY category_name ASC";
+                            $list_kategori = $con->prepare($list_kategori);
+                            $list_kategori->execute();
                                                 
-                                                while($kategori = $list_kategori->fetch()): ?>
+                            while($kategori = $list_kategori->fetch()): ?>
 
-                                                <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
+                            <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
 
-                                                <?php endwhile ?>
-                                            </select>
-                                        </li>
-                                    </ul>
-                                    <form class="d-flex px-3" role="search">
-                                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                        <button class="btn btn-outline-dark" type="submit">Search</button>
-                                    </form>
-                                    <a href="upload.php" class="btn btn-light btn-outline-dark">Upload</a>
-                                </div>
-                                <a class="navbar-brand px-3" href="./akun.php"><?=htmlspecialchars($fetch_data['username'])?></a>
-                            </div>
-                        </nav>
-                    </div>
-                </div> 
-            </div> 
-        </div>
+                            <?php endwhile ?>
+                        </select>
+                    </li>
+                    <li class="nav-item mx-5">
+                        <form class="d-flex px-3" role="search">
+                            <input class="input form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn" type="submit" id="searchBtn">Search</button>
+                        </form>
+                    </li>
+                    <li class="nav-item mx-5">
+                        <a href="upload.php"><button class="btn" id="uploadBtn">Upload</button></a>
+                    </li>
+                </ul>
+            </div>
+            <a class="navbar-brand px-3" href="./akun.php"><?=htmlspecialchars($fetch_data['username'])?></a>
+        </nav>
+    </div>
         <!-- Menampilkan isi file  -->
-        <div class="container">
-            <br>
-            <div class="row">
-                <ol class="breadcrumb" style="box-shadow: 2px 2px 8px #888888;"> 
+        <div class="container-fluid p-5">
+        <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
+                <ol class="breadcrumb fixed-top" style="box-shadow: 2px 2px 8px #888888;"> 
                     <p><h4>&nbsp;&nbsp;&nbsp;&nbsp;Dokumen Detail</h4></p>
                 </ol>
             </div>
@@ -133,60 +147,64 @@ $fetch_data = $fetch_data->fetch();
                 }
                 ?>
         </div>
-    </body>
+</body>
 </html>
 
 <script>
-        $(function() 
+    $(function() 
+    {
+        const showDataCategory = (id) => 
         {
-            const showDataCategory = (id) => 
-            {
-                $.ajax({
-                    url: 'list_ajax.php',
-                    type: 'POST',
-                    data: 'kategori=' + id + '&get_ajax=true',
-                    success: function(output) 
-                    {
-                        if (output == -1)
-                            alert('Tidak ada data yang ditampilkan')
-                        // <?php
-                        //     // tampilin semua  data 
-                        //     $check_data = "SELECT penulis, judul, rating FROM `documents` ORDER BY judul ASC";
-                        //     $check_data = $con->prepare($check_data);
-                        //     $check_data->execute();
+            $.ajax({
+                url: 'list_ajax.php',
+                type: 'POST',
+                data: 'kategori=' + id + '&get_ajax=true',
+                success: function(output) 
+                {
+                    if (output == -1)
+                        alert('Tidak ada data yang ditampilkan')
+                    // <?php
+                    //     // tampilin semua  data 
+                    //     $check_data = "SELECT penulis, judul, rating FROM `documents` ORDER BY judul ASC";
+                    //     $check_data = $con->prepare($check_data);
+                    //     $check_data->execute();
 
-                        //     if ($check_data->rowCount() == 0)
-                        //         echo -1;
-                        //     else
-                        //     {
-                        //         while($document = $check_data->fetch())
-                        //         {
-                        //             echo '<tr>';
-                        //             echo '<td>'.$document['penulis'].'</td>';
-                        //             echo '<td>'.$document['judul'].'</td>';
-                        //             echo '<td>'.$document['rating'].'</td>';
-                        //             echo '</tr>';
-                        //         }
-                        //     }
-                        // ?>
-                    
+                    //     if ($check_data->rowCount() == 0)
+                    //         echo -1;
+                    //     else
+                    //     {
+                    //         while($document = $check_data->fetch())
+                    //         {
+                    //             echo '<tr>';
+                    //             echo '<td>'.$document['penulis'].'</td>';
+                    //             echo '<td>'.$document['judul'].'</td>';
+                    //             echo '<td>'.$document['rating'].'</td>';
+                    //             echo '</tr>';
+                    //         }
+                    //     }
+                    // ?>
+                
 
-                        else
-                            $('#output-ajax').html(output)
-                    },
-                    error: function(e) {
-                        alert('Terjadi kesalahan saat load data');
-                    }
-                })
-            }
-
-
-            $('#kategori').change(function(e) 
-            {
-                const id = $(this).val()
-                showDataCategory(id)
+                    else
+                        $('#output-ajax').html(output)
+                },
+                error: function(e) {
+                    alert('Terjadi kesalahan saat load data');
+                }
             })
+        }
+
+
+        $('#kategori').change(function(e) 
+        {
+            const id = $(this).val()
+            showDataCategory(id)
         })
+    })
+
+    setTimeout(function(){
+        $('.preloader').slideUp();
+    }, 3000);
 </script>
 
 
