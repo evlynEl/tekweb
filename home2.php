@@ -110,7 +110,7 @@ $fetch_data = $fetch_data->fetch();
                     </li>
                     <li class="nav-item mx-5">
                         <form class="d-flex px-3" role="search">
-                            <input class="input form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <input class="input form-control me-2" type="text" name="key" placeholder="Search" aria-label="Search">
                             <button class="btn" type="submit" id="searchBtn">Search</button>
                         </form>
                     </li>
