@@ -36,7 +36,7 @@ include 'config.php';
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mt-3 mx-auto mb-2 mb-lg-0">
               <li class="nav-item mx-5">
-                <a class="nav-link active" aria-current="page" href="home2.php">Home</a>
+                <a class="nav-link active" aria-current="page" href="home.php">Home</a>
               </li>
               <li class="nav-item mx-5">
                 <a class="nav-link active" href="aboutUs.php">About Us</a>
