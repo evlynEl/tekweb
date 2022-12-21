@@ -34,7 +34,7 @@ include 'config.php';
     <!-- Navbar -->
     <div class="container-fluid">
       <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
-          <a class="navbar-brand px-3">LOGO</a>
+      <a class="navbar-brand"><img class="logo" src="asset/img/logo.png"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -49,42 +49,67 @@ include 'config.php';
               <li class="nav-item mx-5">
                 <a class="nav-link text-black active" href="logIn.php">Log In</a>
               </li>
+              <li class="nav-item mx-5">
+                        <select id="kategori" class="form-select" style="border: 0;">
+                            <option value="">Kategori</option>
+                                                
+                            <?php 
+                                            
+                            $list_kategori = "SELECT * FROM `kategori` ORDER BY category_name ASC";
+                            $list_kategori = $con->prepare($list_kategori);
+                            $list_kategori->execute();
+                                                
+                            while($kategori = $list_kategori->fetch()): ?>
+
+                            <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
+
+                            <?php endwhile ?>
+                        </select>
+                    </li>
           </div>
         <a class="navbar-brand px-3 mx-5" href="#">GUEST</a>
       </nav>
     </div>
 
     <div class="container-fluid p-5">
-      <!-- Landing -->
+      <!-- LOGIN -->
       <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
-        <div class="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
-          <h2 class="text-center animate__animated animate__zoomIn">DO YOU ALREADY HAVE AN ACCOUNT?</h2>
+        <div class="d-flex flex-column justify-content-center align-items-center">
+          <h2 class="landing-text text-center text-black animate__animated animate__zoomIn">DO YOU ALREADY HAVE AN ACCOUNT?</h2>
           <br>
           <a href="logIn.php"><button id="landingBtn">LOG IN <i class="fa-solid fa-arrow-right"></i></button></a>
         </div>  
       </div>
     
 
-      <div class="col-md-12">
-        <table class="table table-bordered table-striped table-dark text-white">
-          <thead class="bg-dark">
-            <tr>
-              <th>ID Buku</th>
-              <th>Penulis</th>
-              <th>Judul</th>
-              <th>File</th>
-              <th>Kategori ID</th>
-              <th>Rating</th>
-              <th>Action</th>
-            </tr>                                
-          </thead>
-          <tbody id="output-ajax">
-                              
+    <!-- Body -->
+    <div class="container-fluid p-5">
+        <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
+            <h3 class="doc fixed-top">Daftar Dokumen</h3>
+            <table class="table fixed-top mt-5">
+                <thead>
+                    <tr>
+                        <th>ID Buku</th>
+                        <th>Penulis</th>
+                        <th>Judul</th>
+                        <th>File</th>
+                        <th>Kategori ID</th>
+                        <th>Rating</th>
+                        <th>Action</th>
+                    </tr>
+                    
+                    
+                </thead>
+                <tbody id="output-ajax">
 
-          </tbody>
-        </table>
-      </div>
-    </div>
+
+                </tbody>
+            </table>
+        </div>  
+    </div> 
+
+    <iframe class="fixed-bottom" width="75px" height="75px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1190917987&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+
 </body>
 </html>
 

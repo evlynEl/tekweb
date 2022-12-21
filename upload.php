@@ -21,7 +21,7 @@ $fetch_data->execute([ $login_user ]);
 
 $fetch_data = $fetch_data->fetch();
 
-$koneksi = mysqli_connect("localhost","root","admin","db");
+$koneksi = mysqli_connect("localhost","root","","db");
 
 if(isset($_POST['proses'])){
     $direktori = "berkas/";
@@ -103,7 +103,7 @@ if(isset($_POST['proses'])){
     <!-- Navbar -->
     <div class="container-fluid">
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
-            <a class="navbar-brand">LOGO</a>
+        <a class="navbar-brand"><img class="logo" src="asset/img/logo.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -153,7 +153,7 @@ if(isset($_POST['proses'])){
                         </select> 
                     <!--upload file-->
                     <input type="file" id="upload-btn" name="NamaFile" hidden/>
-                    <label for="upload-btn"><button class="btn">Select Documents</button></label>
+                    <label for="upload-btn">Select Documents</label>
                     <br>
                     <span id="file-chosen">No file chosen</span>
                     <br>                               
@@ -170,16 +170,16 @@ if(isset($_POST['proses'])){
                         
                         </form> -->
                     
-                    <br />
-                    <div class="d-grid gap-2 col-3 mx-auto">
-                        <!-- <button class="btn btn-outline-light" type="submit">Upload</button> -->
-                        <input type="submit" name="proses" value="Upload" class="btn btn-outline-light"><button>Upload</button>
-                        <a href="home2.php"><button class="btn btn-outline-light">Back</button></a>
-                    </div>
-                </div>
+            <br>
+            <div class="d-grid gap-2 col-3 mx-auto">
+                <!-- <button class="btn btn-outline-light" type="submit">Upload</button> -->
+                <input type="submit" name="proses" value="Upload" class="btn btn-light">
+                <a href="home2.php"><button class="btn">Back</button></a>
             </div>
         </div>
-        </div>
+
+        <iframe class="fixed-bottom" width="75px" height="75px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1190917987&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+
     </body>
 </html>
 
@@ -193,66 +193,55 @@ if(isset($_POST['proses'])){
     })
 
 
-    $(function() {   
-        const showDataCategory = (id) => 
-        {
-            $.ajax({
-                url: 'list_ajax.php',
-                type: 'POST',
-                data: 'kategori=' + id + '&get_ajax=true',
-                success: function(output) 
-                {
-                    if (output == -1)
-                        alert('Tidak ada data yang ditampilkan')
-                
+    const actualBtn = document.getElementById('upload-btn');
 
-                    else
-                        $('#output-ajax').html(output)
-                },
-                error: function(e) {
-                    alert('Terjadi kesalahan saat load data');
-                }
-            })
-        }
+    const fileChosen = document.getElementById('file-chosen');
 
-        $('#kategori').change(function(e) 
-        {
-            const id = $(this).val()
-            showDataCategory(id)
-        })
-
-
-        $("#form-tambah").submit(function(e) 
-        {
-            e.preventDefault();
-
-            const formData = $(this).serialize();
-            const id = $('#kategori').val()
-
-            $.ajax({
-                url: 'list_ajax.php',
-                type: 'POST',
-                data: formData + '&kategori=' + id + '&tambah_doc=true',
-                success: function(output) 
-                {
-                    if (output == -1)
-                        alert('Gagal diinput')
-
-                    else 
-                    {
-                        alert("Data berhasil diinput")
-                        showDataCategory(id)
-
-                        $("#form-tambah").trigger('reset')
-                    }
-                },
-                error: function(e) 
-                {
-                    alert('Terjadi kesalahan saat load data');
-                }
-            })
-        })
+    actualBtn.addEventListener('change', function(){
+        fileChosen.textContent = this.files[0].name
     })
+
+
+    $(function() 
+        {
+            $('#kategori').change(function(e) 
+            {
+                const id = $(this).val()
+                showDataCategory(id)
+            })
+
+
+            $("#form-tambah").submit(function(e) 
+            {
+                e.preventDefault();
+
+                const formData = $(this).serialize();
+                const id = $('#kategori').val()
+
+                $.ajax({
+                    url: 'list_ajax.php',
+                    type: 'POST',
+                    data: formData + '&kategori=' + id + '&tambah_doc=true',
+                    success: function(output) 
+                    {
+                        if (output == -1)
+                            alert('Gagal diinput')
+
+                        else 
+                        {
+                            alert("Data berhasil diinput")
+                            showDataCategory(id)
+
+                            $("#form-tambah").trigger('reset')
+                        }
+                    },
+                    error: function(e) 
+                    {
+                        alert('Terjadi kesalahan saat load data');
+                    }
+                })
+            })
+        })
 
     setTimeout(function(){
         $('.preloader').slideUp();

@@ -55,7 +55,7 @@ $fetch_data = $fetch_data->fetch();
     <!-- Navbar -->
     <div class="container-fluid">
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
-            <a class="navbar-brand">LOGO</a>
+        <a class="navbar-brand"><img class="logo" src="asset/img/logo.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -91,6 +91,9 @@ $fetch_data = $fetch_data->fetch();
             </div>    
         </div>
     </div>
+
+    <iframe class="fixed-bottom" width="75px" height="75px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1190917987&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+
 </body>
 </html>
 

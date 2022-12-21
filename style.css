@@ -129,6 +129,10 @@ button:hover {
     min-height: 80vh;
 }
 
+.landing-text {
+    animation-delay: 3.5s;
+}
+
 #landing h2 {
     font-size: 3em;
     background: linear-gradient(to right, #444a6c 0%, #ece0f1 100%);
@@ -247,4 +251,16 @@ label{
 }
 .preloader::before{
     animation-delay: .5s;
+}
+
+iframe {
+    opacity: 0.5;
+    transition: .5s ease;
+    transform: translate(-55px, 0px);
+    border-radius: 100px;
+}
+iframe:hover {
+    opacity: 1;
+    transform: translate(0%, 0px);
+    border-radius: 0px;
 }
