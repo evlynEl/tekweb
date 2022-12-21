@@ -1,0 +1,171 @@
+@font-face {
+    font-family: alexandria;
+    src: url(assets/font/Alexandria-Regular.ttf);
+}
+
+@font-face {
+    font-family: alexandriaLight;
+    src: url(assets/font/Alexandria-Light.ttf);
+}
+
+body {
+    font-family: alexandriaLight;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background: url(asset/img/bg_home.jpg) fixed no-repeat;
+    background-size: cover;
+    overflow: overlay;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb:hover {
+    border-radius: 20pt;
+    background: #555; 
+}
+
+.navbar {
+    position: relative;
+    background-color: transparent;
+    backdrop-filter: blur(25px);
+    transition: all .5s ease;
+}
+.nav-link:hover {
+    background: linear-gradient(to right, #444a6c 0%, #ece0f1 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: .5s ease;
+    transform: scale(1.1);
+}
+#kategori {
+    background-color: transparent;
+    color: white;
+    transition: all .5s ease;
+}
+#kategori:hover {
+    background: linear-gradient(to right, #444a6c 0%, #ece0f1 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: .5s ease;
+    transform: scale(1.1);
+}
+option {
+    background-color: transparent;
+}
+
+#searchBtn {
+    background-color: white;
+}
+
+button {
+    width: 7em;
+    height: 2.5em;
+    border-radius: 30pt !important;
+    font-size: 15px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: .5s ease;
+    background-color: transparent !important;
+    color: black !important;
+}
+button::before{
+    content: '';
+    width: 0;
+    height: 2.5em;
+    border-radius: 30pt;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #444a6c 0%, #ece0f1 50%);
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+button:hover::before {
+    width: 9em;
+    background-image: linear-gradient(to right, #444a6c 0%, #ece0f1 50%);
+}
+button:hover {
+    transform: scale(1.1);
+    background-color: transparent;
+    transition: .5s ease;
+}
+
+.input {
+    border-radius: 30px !important;
+}
+
+.frosted {
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 20pt;
+    backdrop-filter: blur(25px);
+}
+
+.row {
+    min-height: 80vh;
+}
+
+#landing h2 {
+    font-size: 3em;
+    background: linear-gradient(to right, #444a6c 0%, #ece0f1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#landing button {
+    font-size: 1.25em;
+    box-shadow: 5px 5px 5px #333;
+    border: 0;
+}
+
+#landingBtn {
+    width: 9em;
+    height: 2.25em;
+    border-radius: 30pt;
+    font-size: 15px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: .5s ease;
+}
+
+#landingBtn::before {
+    content: '';
+    width: 0;
+    height: 2.25em;
+    border-radius: 30pt;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to right, #444a6c 0%, #ece0f1 100%);
+    color: #fff;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+}
+
+#landingBtn:hover::before {
+    width: 9em;
+   
+}
+
+#landingBtn:hover {
+    transform: scale(1.1);
+    color: #fff;
+}
+
+#masuk {
+    color: #b4a5cf;
+}
