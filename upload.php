@@ -202,46 +202,45 @@ if(isset($_POST['proses'])){
     })
 
 
-    $(function() 
-        {
-            $('#kategori').change(function(e) 
-            {
-                const id = $(this).val()
-                showDataCategory(id)
-            })
+    // $(function() {
+    //     $('#kategori').change(function(e) 
+    //     {
+    //         const id = $(this).val()
+    //         showDataCategory(id)
+    //     })
 
 
-            $("#form-tambah").submit(function(e) 
-            {
-                e.preventDefault();
+    //     $("#form-tambah").submit(function(e) 
+    //     {
+    //         e.preventDefault();
 
-                const formData = $(this).serialize();
-                const id = $('#kategori').val()
+    //         const formData = $(this).serialize();
+    //         const id = $('#kategori').val()
 
-                $.ajax({
-                    url: 'list_ajax.php',
-                    type: 'POST',
-                    data: formData + '&kategori=' + id + '&tambah_doc=true',
-                    success: function(output) 
-                    {
-                        if (output == -1)
-                            alert('Gagal diinput')
+    //         $.ajax({
+    //             url: 'list_ajax.php',
+    //             type: 'POST',
+    //             data: formData + '&kategori=' + id + '&tambah_doc=true',
+    //             success: function(output) 
+    //             {
+    //                 if (output == -1)
+    //                     alert('Gagal diinput')
 
-                        else 
-                        {
-                            alert("Data berhasil diinput")
-                            showDataCategory(id)
+    //                 else 
+    //                 {
+    //                     alert("Data berhasil diinput")
+    //                     showDataCategory(id)
 
-                            $("#form-tambah").trigger('reset')
-                        }
-                    },
-                    error: function(e) 
-                    {
-                        alert('Terjadi kesalahan saat load data');
-                    }
-                })
-            })
-        })
+    //                     $("#form-tambah").trigger('reset')
+    //                 }
+    //             },
+    //             error: function(e) 
+    //             {
+    //                 alert('Terjadi kesalahan saat load data');
+    //             }
+    //         })
+    //     })
+    // })
 
     setTimeout(function(){
         $('.preloader').slideUp();
