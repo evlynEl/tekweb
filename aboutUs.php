@@ -43,7 +43,7 @@
           </li>
         </ul>
       </div>
-      <a class="navbar-brand px-3 mx-5" href="#">GUEST</a>
+      <a class="navbar-brand px-3" href="./akun.php"><?=htmlspecialchars($fetch_data['username'])?></a>
     </nav>
   </div>
 
