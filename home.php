@@ -89,42 +89,21 @@ include 'config.php';
 
               <div class="col-md-12">
                 <table class="table table-bordered table-striped table-secondary">
-                  <thead class="bg-dark">
-                              <tr>
-                                  <th>No</th>
-                                  <th>ID Buku</th>
-                                  <th>Penulis</th>
-                                  <th>Judul</th>
-                                  <th>File</th>
-                                  <th>Kategori ID</th>
-                                  <th>Rating</th>
-                                  <th>Action</th>
-                              </tr>
-                              
-                              <?php
-                                  $data = mysqli_query($koneksi, "SELECT * FROM `documents` ORDER BY id ASC");
-                                  $no = 1;
-                                  while($b = mysqli_fetch_array($data)) {
-                              ?>
+                  <thead class="bg-dark">                  
+                    <tr>
+                      <th>ID Buku</th>
+                      <th>Penulis</th>
+                      <th>Judul</th>
+                      <th>File</th>
+                      <th>Kategori ID</th>
+                      <th>Rating</th>
+                      <th>Action</th>
+                    </tr>                                                                
+                  </thead>
+                  <tbody id="output-ajax">                            
 
-                              <tr>
-                                  <td><?php echo $no++ ?></td>
-                                  <td><?php echo $b['id'] ?></td>
-                                  <td><?php echo $b['penulis'] ?></td>
-                                  <td><?php echo $b['judul'] ?></td>
-                                  <td><?php echo $b['file'] ?></td>
-                                  <td><?php echo $b['kategori_id'] ?></td>
-                                  <td><?php echo $b['rating'] ?></td>
-
-                                  <td>
-                                      
-                                  </td>
-                              </tr>
-                      <?php
-                          }
-                      ?>
-                      </thead>
-                    </table>
+                  </tbody>                     
+                  </table>
               </div>
                 <!-- <div class="col-6 p-0 text-white" style="text-align: center;">
                   <h1>Welcome!</h1>

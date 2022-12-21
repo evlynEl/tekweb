@@ -6,26 +6,53 @@ if (isset($_POST['get_ajax']))
 {
     $id_kategori = $_POST['kategori'];
 
-    // tampilin data berdasarkan kategori
-    $check_data = "SELECT penulis, judul, rating FROM `documents` WHERE kategori_id = ? ORDER BY judul ASC";
-    $check_data = $con->prepare($check_data);
-    $check_data->execute([ $id_kategori ]);
+    if($id_kategori != null){
+        // tampilin data
+        $check_data = "SELECT id, penulis, judul, file, kategori_id, rating FROM `documents` WHERE kategori_id = ? ORDER BY id ASC";
+        $check_data = $con->prepare($check_data);
+        $check_data->execute([ $id_kategori ]);
 
-    if ($check_data->rowCount() == 0)
-        echo -1;
-    else
-    {
-        while($document = $check_data->fetch())
+        if ($check_data->rowCount() == 0)
+            echo -1;
+        else
         {
-            echo '<tr>';
-            echo '<td>'.$document['penulis'].'</td>';
-            echo '<td>'.$document['judul'].'</td>';
-            echo '<td>'.$document['file'].'</td>';
-            echo '<td>'.$document['rating'].'</td>';
-            echo '</tr>';
+            while($document = $check_data->fetch())
+            {
+                echo '<tr>';
+                echo '<td>'.$document['id'].'</td>';
+                echo '<td>'.$document['penulis'].'</td>';
+                echo '<td>'.$document['judul'].'</td>';
+                echo '<td>'.$document['file'].'</td>';
+                echo '<td>'.$document['kategori_id'].'</td>';
+                echo '<td>'.$document['rating'].'</td>';
+                echo '</tr>';
+            }
+        }
+    }
+    else{
+        $check_data = "SELECT * FROM `documents` ORDER BY id ASC";
+        $check_data = $con->prepare($check_data);
+        $check_data->execute();
+    
+        if ($check_data->rowCount() == 0)
+            echo -1;
+        else
+        {
+            while($document = $check_data->fetch())
+            {
+                echo '<tr>';
+                echo '<td>'.$document['id'].'</td>';
+                echo '<td>'.$document['penulis'].'</td>';
+                echo '<td>'.$document['judul'].'</td>';
+                echo '<td>'.$document['file'].'</td>';
+                echo '<td>'.$document['kategori_id'].'</td>';
+                echo '<td>'.$document['rating'].'</td>';
+                echo '</tr>';
+            }
         }
     }
 }
+
 
 if (isset($_POST['tambah_doc']))
 {

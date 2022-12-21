@@ -3,7 +3,7 @@
 include 'config.php';
 
 $login_user = $_COOKIE['login_user'];
-$koneksi = mysqli_connect("localhost","root","","db");
+$koneksi = mysqli_connect("localhost","root","admin","db");
 
 // if (!isset($_SESSION['login_user']))
 if (!isset($login_user))
@@ -80,11 +80,10 @@ $fetch_data = $fetch_data->fetch();
                                         <a class="nav-link active" aria-current="page" href="home2.php">Home</a>
                                         </li>
                                         <li class="nav-item">
-                                            <select id="kategori" class="form-select bg-light" style="border: 0;">
-                                                <option value="">Kategori</option>
-                                                
-                                                <?php 
-                                            
+                                        <select id="kategori" class="form-select">
+                                            <option value="">Kategori</option>                                        
+                                            <?php 
+                                        
                                                 $list_kategori = "SELECT * FROM `kategori` ORDER BY category_name ASC";
                                                 $list_kategori = $con->prepare($list_kategori);
                                                 $list_kategori->execute();
@@ -94,7 +93,7 @@ $fetch_data = $fetch_data->fetch();
                                                 <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
 
                                                 <?php endwhile ?>
-                                            </select>
+                                        </select>
                                         </li>
                                     </ul>
                                     <form class="d-flex px-3" role="search">
@@ -111,56 +110,25 @@ $fetch_data = $fetch_data->fetch();
 
                     <div class="col-md-12 py-3">
                         <h3 class="text-white">Daftar Dokumen</h3>
-                        <!-- <table class="table table-bordered table-striped table-secondary">
-                            <thead class="bg-dark ">
-                                <tr>
-                                    <td >Penulis</td>
-                                    <td>Judul</td>
-                                    <td>File</td>
-                                    <td>Rating</td>
-                                </tr>
-                            </thead>
-                            <tbody id="output-ajax">
-
-                            </tbody>
-                        </table> -->
                         <table class="table table-bordered table-striped table-secondary">
                             <thead class="bg-dark">
-                            <tr>
-                                <th>No</th>
-                                <th>ID Buku</th>
-                                <th>Penulis</th>
-                                <th>Judul</th>
-                                <th>File</th>
-                                <th>Kategori ID</th>
-                                <th>Rating</th>
-                                <th>Action</th>
-                            </tr>
+                                <tr>
+                                    <th>ID Buku</th>
+                                    <th>Penulis</th>
+                                    <th>Judul</th>
+                                    <th>File</th>
+                                    <th>Kategori ID</th>
+                                    <th>Rating</th>
+                                    <th>Action</th>
+                                </tr>
+                                
+                                
+                            </thead>
+                            <tbody id="output-ajax">
                             
-                            <?php
-                                $data = mysqli_query($koneksi, "SELECT * FROM `documents` ORDER BY id ASC");
-                                $no = 1;
-                                while($b = mysqli_fetch_array($data)) {
-                            ?>
 
-                            <tr>
-                                <td><?php echo $no++ ?></td>
-                                <td><?php echo $b['id'] ?></td>
-                                <td><?php echo $b['penulis'] ?></td>
-                                <td><?php echo $b['judul'] ?></td>
-                                <td><?php echo $b['file'] ?></td>
-                                <td><?php echo $b['kategori_id'] ?></td>
-                                <td><?php echo $b['rating'] ?></td>
-
-                                <td>
-                                    
-                                </td>
-                            </tr>
-                    <?php
-                        }
-                    ?>
-                    </thead>
-                    </table>
+                            </tbody>
+                        </table>
                     </div>  
                 </div> 
             </div> 
@@ -181,27 +149,6 @@ $fetch_data = $fetch_data->fetch();
                     {
                         if (output == -1)
                             alert('Tidak ada data yang ditampilkan')
-                        // <?php
-                        //     // tampilin semua  data 
-                        //     $check_data = "SELECT penulis, judul, rating FROM `documents` ORDER BY judul ASC";
-                        //     $check_data = $con->prepare($check_data);
-                        //     $check_data->execute();
-
-                        //     if ($check_data->rowCount() == 0)
-                        //         echo -1;
-                        //     else
-                        //     {
-                        //         while($document = $check_data->fetch())
-                        //         {
-                        //             echo '<tr>';
-                        //             echo '<td>'.$document['penulis'].'</td>';
-                        //             echo '<td>'.$document['judul'].'</td>';
-                        //             echo '<td>'.$document['rating'].'</td>';
-                        //             echo '</tr>';
-                        //         }
-                        //     }
-                        // ?>
-                    
 
                         else
                             $('#output-ajax').html(output)
@@ -219,6 +166,6 @@ $fetch_data = $fetch_data->fetch();
                 showDataCategory(id)
             })
         })
-</script>
+    </script>
 
 
