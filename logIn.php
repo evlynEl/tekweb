@@ -81,10 +81,6 @@ if (isset($_POST['login']))
             <a class="nav-link active" href="logIn.php">Log In</a>
           </li>
         </ul>
-        <form class="d-flex px-3 mx-5" role="search">
-          <input class="input form-control me-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn text-white mx-5" type="submit" id="searchBtn">Search</button>
-        </form>
       </div>
       <a class="navbar-brand px-3 mx-5" href="#">GUEST</a>
     </nav>

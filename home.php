@@ -42,28 +42,6 @@ include 'config.php';
               <li class="nav-item mx-5">
                 <a class="nav-link active" href="logIn.php">Log In</a>
               </li>
-              <li class="nav-item mx-5">
-                <select id="kategori" class="form-select" style="border: 0;">
-                  <option value="">Kategori</option>
-                                    
-                  <?php 
-                                
-                  $list_kategori = "SELECT * FROM `kategori` ORDER BY category_name ASC";
-                  $list_kategori = $con->prepare($list_kategori);
-                  $list_kategori->execute();
-                                    
-                  while($kategori = $list_kategori->fetch()): ?>
-
-                  <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
-
-                  <?php endwhile ?>
-                </select>
-              </li>
-            </ul>
-            <form class="d-flex px-3 mx-5" role="search">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn mx-5" type="submit" id="searchBtn">Search</button>
-            </form>
           </div>
         <a class="navbar-brand px-3 mx-5" href="#">GUEST</a>
       </nav>
