@@ -69,107 +69,95 @@ if(isset($_POST['proses'])){
 
 }
 ?>
-
+    
 <!DOCTYPE html>
 <html>
-  <!--PAGE SETELAH LOG IN-->
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Upload a document</title>
-        <link rel="stylesheet" href="/projek/asset/home.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-        <script src="https://browser.sentry-cdn.com/7.27.0/bundle.min.js"></script>
+<head>
+    <title>Log In</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://browser.sentry-cdn.com/7.27.0/bundle.min.js"></script>
+    <!-- CSS Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Animate CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+    
+<body>
+    <!-- Navbar -->
+    <div class="container-fluid">
+        <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
+            <a class="navbar-brand">LOGO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mt-3 mx-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-5">
+                    <a class="nav-link active" aria-current="page" href="home2.php">Home</a>
+                </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link active" href="aboutUs.php">About Us</a>
+                </li>
+                <li class="nav-item mx-5">
+                    <a class="nav-link active" href="logIn.php">Log In</a>
+                </li>
+                </ul>
+            </div>
+            <a class="navbar-brand px-3" href="./akun.php"><?=htmlspecialchars($fetch_data['username'])?></a>
+        </nav>
+    </div>
 
-        <!--gambar-->
-        <script src="https://cdn.lordicon.com/qjzruarw.js"></script>
-        <!-- CSS untuk upload file buttonnya -->
-        <style>
-            label{
-                display: inline-block;
-                background-color: indigo;
-                color: white;
-                padding: 0.5rem;
-                font-family: sans-serif;
-                border-radius: 0.3rem;
-                cursor: pointer;
-                margin-top: 1rem;
-            }
+    <!-- Body -->
+    <div class="container-fluid p-5">
+        <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
+            <h3 class="text-center">Publish to the world</h3>
+            <p class="text-center">Research paper, article, document, etc</p>
 
-            #file-chosen{
-                margin-left: 0.3rem;
-                font-family: sans-serif;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="full-site bg-dark">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 py-3">
-                    <nav class="navbar navbar-expand-lg bg-light">
-                        <div class="container-fluid">
-                            <a class="navbar-brand">LOGO</a>
-                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                            </button>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="./home2.php">Home</a>
-                                </li>                                
-                            </ul>
-                            <form class="d-flex px-3" role="search">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-dark" type="submit">Search</button>
-                            </form>
-                            </div>
-                            <a class="navbar-brand px-3" href="./akun.php"><?=htmlspecialchars($fetch_data['username'])?></a>
-                        </div>
-                    </nav>
-                </div>
-                <div class="clear-head"></div>
+            <?=isset($msg) ? '<div class="alert alert-success">'.$msg.'</div>' : ''?>
 
-                <div class="my-5 text-white bg-dark" style="margin: auto;text-align:center;height:auto;">
-                    <h3>Publish to the world</h3>
-                    <p>Research paper, article, document, etc</p>
+            <div class="col-md-4" style="margin: auto;text-align:center">
+                <form method="post" id="form-tambah" enctype="multipart/form-data">
+                    <p>Penulis</p>
+                        <input type="text" class="form-control" id="penulis" name="penulis" placeholder="Penulis"><br />
+                    <p>Judul</p>
+                        <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul"><br />
+                    <p>Kategori</p>
+                        <select id="kategori" class="form-select">
+                            <option value="">-- Pilih kategori: --</option>
+                                
+                            <?php 
+                            
+                            $list_kategori = "SELECT * FROM `kategori` ORDER BY category_name ASC";
+                            $list_kategori = $con->prepare($list_kategori);
+                            $list_kategori->execute();
+                            
+                            while($kategori = $list_kategori->fetch()): ?>
 
-                    <?=isset($msg) ? '<div class="alert alert-success">'.$msg.'</div>' : ''?>
+                            <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
 
-                    <div class="col-md-4" style="margin: auto;text-align:center">
-                        <form method="post" id="form-tambah" enctype="multipart/form-data">
-                            <p>Penulis</p>
-                                <input type="text" class="form-control" id="penulis" name="penulis" placeholder="Penulis"><br />
-                            <p>Judul</p>
-                                <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul"><br />
-                            <p>Kategori</p>
-                                <select id="kategori" class="form-select">
-                                    <option value="">-- Pilih kategori: --</option>
-                                        
-                                    <?php 
-                                    
-                                    $list_kategori = "SELECT * FROM `kategori` ORDER BY category_name ASC";
-                                    $list_kategori = $con->prepare($list_kategori);
-                                    $list_kategori->execute();
-                                    
-                                    while($kategori = $list_kategori->fetch()): ?>
-
-                                    <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
-
-                                    <?php endwhile ?>
-                                </select> 
-                            <!--upload file-->
-                            <input type="file" id="upload-btn" name="NamaFile" hidden/>
-                            <label for="upload-btn">Select Documents</label>
-                            <br>
-                            <span id="file-chosen">No file chosen</span>
-                            <br>                               
-                        </form>
-                    </div>
-                    <br />
+                            <?php endwhile ?>
+                        </select> 
+                    <!--upload file-->
+                    <input type="file" id="upload-btn" name="NamaFile" hidden/>
+                    <label for="upload-btn">Select Documents</label>
+                    <br>
+                    <span id="file-chosen">No file chosen</span>
+                    <br>                               
+                </form>
+            </div>
+            <br>
                         <!-- Form terbaru -> desain pakai CSS dan langsung tampil nama file yg akan diupload -->
                         <!-- <form action="" method="POST" enctype="multipart/form-data">                            
                             <input type="file" id="upload-btn" name="NamaFile" hidden/>
@@ -183,8 +171,8 @@ if(isset($_POST['proses'])){
                     <br />
                     <div class="d-grid gap-2 col-3 mx-auto">
                         <!-- <button class="btn btn-outline-light" type="submit">Upload</button> -->
-                        <input type="submit" name="proses" value="Upload" class="btn btn-outline-light">
-                        <a class="btn btn-outline-light" href="home2.php">Back</a>
+                        <input type="submit" name="proses" value="Upload" class="btn btn-outline-light"><button>Upload</button>
+                        <a href="home2.php"><button class="btn btn-outline-light">Back</button></a>
                     </div>
                 </div>
             </div>
