@@ -25,9 +25,14 @@ $koneksi = mysqli_connect("localhost","root","admin","db");
 
 if(isset($_POST['proses'])){
     $direktori = "berkas/";
+    $penulis = $_POST['penulis'];
+    $judul = $_POST['judul'];
+    // $kategori_id = $_POST['kategori_id'];
     $file_name = $_FILES['NamaFile']['name'];
     move_uploaded_file($_FILES['NamaFile']['tmp_name'],$direktori.$file_name);
-    mysqli_query($koneksi, "insert into documents set file='$file_name'");
+    mysqli_query($koneksi, "insert into documents(penulis, judul, file) 
+        values('$penulis', '$judul', '$file_name')");
+    // mysqli_query($koneksi, "insert into documents set file='$file_name'");
 
     // pengecekan ketika error terjadi dan menampilkan persan errornya
     if ($_FILES["NamaFile"]["error"] !== UPLOAD_ERR_OK) {
@@ -178,7 +183,9 @@ if(isset($_POST['proses'])){
                     <br />
                     <div class="d-grid gap-2 col-3 mx-auto">
                         <!-- <button class="btn btn-outline-light" type="submit">Upload</button> -->
+                        <br>
                         <input type="submit" name="proses" value="Upload" class="btn btn-outline-light">
+                        <a class="btn btn-outline-light" href="home2.php">Back</a>
                     </div>
                 </div>
             </div>
