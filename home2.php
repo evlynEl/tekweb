@@ -3,7 +3,7 @@
 include 'config.php';
 
 $login_user = $_COOKIE['login_user'];
-
+$koneksi = mysqli_connect("localhost","root","","db");
 
 // if (!isset($_SESSION['login_user']))
 if (!isset($login_user))
