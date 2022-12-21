@@ -118,8 +118,8 @@ $fetch_data = $fetch_data->fetch();
     <!-- Body -->
     <div class="container-fluid p-5">
         <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
-            <h3 class="doc">Daftar Dokumen</h3>
-            <table class="table">
+            <h3 class="doc fixed-top">Daftar Dokumen</h3>
+            <table class="table fixed-top mt-5">
                 <thead>
                     <tr>
                         <th>ID Buku</th>
