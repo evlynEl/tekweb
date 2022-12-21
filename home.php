@@ -34,7 +34,7 @@ include 'config.php';
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mt-3 mx-auto mb-2 mb-lg-0">
               <li class="nav-item mx-5">
-                <a class="nav-link active" aria-current="page" href="home2.php">Home</a>
+                <a class="nav-link active" aria-current="page" href="home.php">Home</a>
               </li>
               <li class="nav-item mx-5">
                 <a class="nav-link active" href="aboutUs.php">About Us</a>
@@ -48,17 +48,18 @@ include 'config.php';
     </div>
 
     <div class="container-fluid p-5">
-        <!-- Landing -->
-        <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
-            <div class="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
-                <h2 class="text-center animate__animated animate__zoomIn">Teknologi Web</h2>
-                <br>
-                <a href="logIn.php"><button id="landingBtn">LOG IN <i class="fa-solid fa-arrow-right"></i></button></a>
-            </div>  
-        </div
+      <!-- Landing -->
+      <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
+        <div class="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
+          <h2 class="text-center animate__animated animate__zoomIn">Teknologi Web</h2>
+          <br>
+          <a href="logIn.php"><button id="landingBtn">LOG IN <i class="fa-solid fa-arrow-right"></i></button></a>
+        </div>  
+      </div>
+    
 
       <div class="col-md-12">
-        <table class="table table-bordered table-striped table-secondary">
+        <table class="table table-bordered table-striped table-dark text-white">
           <thead class="bg-dark">
             <tr>
               <th>ID Buku</th>
@@ -71,7 +72,7 @@ include 'config.php';
             </tr>                                
           </thead>
           <tbody id="output-ajax">
-                            
+                              
 
           </tbody>
         </table>
