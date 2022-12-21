@@ -49,14 +49,32 @@ include 'config.php';
               <li class="nav-item mx-5">
                 <a class="nav-link text-black active" href="logIn.php">Log In</a>
               </li>
+              <li class="nav-item mx-5">
+                <select id="kategori" class="form-select" style="border: 0;">
+                  <option value="">Kategori</option>
+                                      
+                  <?php 
+                                  
+                  $list_kategori = "SELECT * FROM `kategori` ORDER BY category_name ASC";
+                  $list_kategori = $con->prepare($list_kategori);
+                  $list_kategori->execute();
+                                      
+                  while($kategori = $list_kategori->fetch()): ?>
+
+                  <option value="<?=$kategori['category_id']?>"><?=$kategori['category_name']?></option>
+
+                  <?php endwhile ?>
+                </select>
+              </li>
             </ul>
           </div>
         <a class="navbar-brand px-3 mx-5" href="#">GUEST</a>
       </nav>
     </div>
 
+    <!-- Body -->
     <div class="container-fluid p-5">
-      <!-- LOGIN -->
+      <!-- Login -->
       <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
         <div class="d-flex flex-column justify-content-center align-items-center">
           <h2 class="landing-text text-center text-black animate__animated animate__zoomIn">DO YOU ALREADY HAVE AN ACCOUNT?</h2>
@@ -65,8 +83,7 @@ include 'config.php';
         </div>  
       </div>
     
-
-    <!-- Body -->
+    <!-- Tabel -->
     <div class="container-fluid p-5">
         <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
             <h3 class="doc fixed-top">Daftar Dokumen</h3>
@@ -92,7 +109,7 @@ include 'config.php';
         </div>  
     </div> 
 
-    <iframe class="fixed-bottom" width="75px" height="75px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1190917987&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+        <iframe class="fixed-bottom" width="75px" height="75px" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1190917987&color=%23ff5500&auto_play=true&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
 
 </body>
 </html>
