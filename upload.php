@@ -176,8 +176,7 @@ if(isset($_POST['proses'])){
                         </form> -->
                     
                     <br />
-                    <div class="d-grid gap-2 col-3 mx-auto">
-                        <!-- <button class="btn btn-outline-light" type="submit">Upload</button> -->
+                    <div class="d-grid gap-2 col-3 mx-auto">                            
                         <input type="submit" name="proses" value="Upload" class="btn btn-outline-light">
                     </div>
                 </div>
@@ -198,7 +197,28 @@ if(isset($_POST['proses'])){
 
 
     $(function() 
-        {
+        {   
+            const showDataCategory = (id) => 
+            {
+                $.ajax({
+                    url: 'list_ajax.php',
+                    type: 'POST',
+                    data: 'kategori=' + id + '&get_ajax=true',
+                    success: function(output) 
+                    {
+                        if (output == -1)
+                            alert('Tidak ada data yang ditampilkan')
+                    
+
+                        else
+                            $('#output-ajax').html(output)
+                    },
+                    error: function(e) {
+                        alert('Terjadi kesalahan saat load data');
+                    }
+                })
+            }
+
             $('#kategori').change(function(e) 
             {
                 const id = $(this).val()
