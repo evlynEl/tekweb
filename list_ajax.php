@@ -25,7 +25,8 @@ if (isset($_POST['get_ajax']))
                 echo '<td>'.$document['file'].'</td>';
                 echo '<td>'.$document['kategori_id'].'</td>';
                 echo '<td>'.$document['rating'].'</td>';
-                echo '<td><a href="dokumen-det.php?id='.$b['id'].'" class="btn btn-warning" title="Lihat Dokumen" style="box-shadow: 4px 2px 2px #888888;">Open</a></td>';
+                echo '<td> <a href="dokumen-det.php?id='.$b['id'].'" class="btn btn-warning" title="Lihat Dokumen" style="box-shadow: 4px 2px 2px #888888;">Open</a>
+                <a href="hapus-dokumen.php?id='.$b['id'].'" class="btn btn-danger" style="box-shadow: 4px 2px 2px #888888;" onclick="return confirm(\'Yakin data mau dihapus?\')">Delete</a> </td>';
                         //logo mata
                         //.<img src="../asset/pic/mata.jpeg">;
                 echo '</tr>';
@@ -50,7 +51,8 @@ if (isset($_POST['get_ajax']))
                 echo '<td>'.$document['file'].'</td>';
                 echo '<td>'.$document['kategori_id'].'</td>';
                 echo '<td>'.$document['rating'].'</td>';
-                echo '<td><a href="dokumen-det.php?id='.$b['id'].'" class="btn btn-warning" title="Lihat Dokumen" style="box-shadow: 4px 2px 2px #888888;">Open</a></td>';
+                echo '<td><a href="dokumen-det.php?id='.$b['id'].'" class="btn btn-warning" title="Lihat Dokumen" style="box-shadow: 4px 2px 2px #888888;">Open</a>
+                <a href="hapus-dokumen.php?id='.$b['id'].'" class="btn btn-danger" style="box-shadow: 4px 2px 2px #888888;" onclick="return confirm(\'Yakin data mau dihapus?\')">Delete</a> </td>';
                 echo '</tr>';
             }
         }
