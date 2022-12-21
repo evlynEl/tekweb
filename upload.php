@@ -92,9 +92,14 @@ if(isset($_POST['proses'])){
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Preloader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
     
 <body>
+    <!-- Preloader -->
+    <div class="preloader"></div>
+
     <!-- Navbar -->
     <div class="container-fluid">
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
@@ -105,13 +110,10 @@ if(isset($_POST['proses'])){
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mt-3 mx-auto mb-2 mb-lg-0">
                 <li class="nav-item mx-5">
-                    <a class="nav-link active" aria-current="page" href="home2.php">Home</a>
+                    <a class="nav-link text-black active" aria-current="page" href="home2.php">Home</a>
                 </li>
                 <li class="nav-item mx-5">
-                    <a class="nav-link active" href="aboutUs.php">About Us</a>
-                </li>
-                <li class="nav-item mx-5">
-                    <a class="nav-link active" href="logIn.php">Log In</a>
+                    <a class="nav-link text-black active" href="aboutUs.php">About Us</a>
                 </li>
                 </ul>
             </div>
@@ -151,7 +153,7 @@ if(isset($_POST['proses'])){
                         </select> 
                     <!--upload file-->
                     <input type="file" id="upload-btn" name="NamaFile" hidden/>
-                    <label for="upload-btn">Select Documents</label>
+                    <label for="upload-btn"><button class="btn">Select Documents</button></label>
                     <br>
                     <span id="file-chosen">No file chosen</span>
                     <br>                               
@@ -191,66 +193,69 @@ if(isset($_POST['proses'])){
     })
 
 
-    $(function() 
-        {   
-            const showDataCategory = (id) => 
-            {
-                $.ajax({
-                    url: 'list_ajax.php',
-                    type: 'POST',
-                    data: 'kategori=' + id + '&get_ajax=true',
-                    success: function(output) 
-                    {
-                        if (output == -1)
-                            alert('Tidak ada data yang ditampilkan')
-                    
+    $(function() {   
+        const showDataCategory = (id) => 
+        {
+            $.ajax({
+                url: 'list_ajax.php',
+                type: 'POST',
+                data: 'kategori=' + id + '&get_ajax=true',
+                success: function(output) 
+                {
+                    if (output == -1)
+                        alert('Tidak ada data yang ditampilkan')
+                
 
-                        else
-                            $('#output-ajax').html(output)
-                    },
-                    error: function(e) {
-                        alert('Terjadi kesalahan saat load data');
-                    }
-                })
-            }
-
-            $('#kategori').change(function(e) 
-            {
-                const id = $(this).val()
-                showDataCategory(id)
+                    else
+                        $('#output-ajax').html(output)
+                },
+                error: function(e) {
+                    alert('Terjadi kesalahan saat load data');
+                }
             })
+        }
+
+        $('#kategori').change(function(e) 
+        {
+            const id = $(this).val()
+            showDataCategory(id)
+        })
 
 
-            $("#form-tambah").submit(function(e) 
-            {
-                e.preventDefault();
+        $("#form-tambah").submit(function(e) 
+        {
+            e.preventDefault();
 
-                const formData = $(this).serialize();
-                const id = $('#kategori').val()
+            const formData = $(this).serialize();
+            const id = $('#kategori').val()
 
-                $.ajax({
-                    url: 'list_ajax.php',
-                    type: 'POST',
-                    data: formData + '&kategori=' + id + '&tambah_doc=true',
-                    success: function(output) 
+            $.ajax({
+                url: 'list_ajax.php',
+                type: 'POST',
+                data: formData + '&kategori=' + id + '&tambah_doc=true',
+                success: function(output) 
+                {
+                    if (output == -1)
+                        alert('Gagal diinput')
+
+                    else 
                     {
-                        if (output == -1)
-                            alert('Gagal diinput')
+                        alert("Data berhasil diinput")
+                        showDataCategory(id)
 
-                        else 
-                        {
-                            alert("Data berhasil diinput")
-                            showDataCategory(id)
-
-                            $("#form-tambah").trigger('reset')
-                        }
-                    },
-                    error: function(e) 
-                    {
-                        alert('Terjadi kesalahan saat load data');
+                        $("#form-tambah").trigger('reset')
                     }
-                })
+                },
+                error: function(e) 
+                {
+                    alert('Terjadi kesalahan saat load data');
+                }
             })
         })
+    })
+
+    setTimeout(function(){
+        $('.preloader').slideUp();
+    }, 3000);
 </script>
 

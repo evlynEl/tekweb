@@ -69,8 +69,14 @@ $fetch_data = $fetch_data->fetch();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Preloader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader"></div>
+
     <!-- Navbar -->
     <div class="container-fluid">
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
@@ -85,9 +91,6 @@ $fetch_data = $fetch_data->fetch();
                     </li>
                     <li class="nav-item mx-5">
                         <a class="nav-link text-black active" href="aboutUs.php">About Us</a>
-                    </li>
-                    <li class="nav-item mx-5">
-                        <a class="nav-link text-black active" href="logIn.php">Log In</a>
                     </li>
                     <li class="nav-item mx-5">
                         <select id="kategori" class="form-select" style="border: 0;">
@@ -150,35 +153,39 @@ $fetch_data = $fetch_data->fetch();
 </html>
 
 <script>
-        $(function() 
+    $(function() 
+    {
+        const showDataCategory = (id) => 
         {
-            const showDataCategory = (id) => 
-            {
-                $.ajax({
-                    url: 'list_ajax.php',
-                    type: 'POST',
-                    data: 'kategori=' + id + '&get_ajax=true',
-                    success: function(output) 
-                    {
-                        if (output == -1)
-                            alert('Tidak ada data yang ditampilkan')
+            $.ajax({
+                url: 'list_ajax.php',
+                type: 'POST',
+                data: 'kategori=' + id + '&get_ajax=true',
+                success: function(output) 
+                {
+                    if (output == -1)
+                        alert('Tidak ada data yang ditampilkan')
 
-                        else
-                            $('#output-ajax').html(output)
-                    },
-                    error: function(e) {
-                        alert('Terjadi kesalahan saat load data');
-                    }
-                })
-            }
-
-
-            $('#kategori').change(function(e) 
-            {
-                const id = $(this).val()
-                showDataCategory(id)
+                    else
+                        $('#output-ajax').html(output)
+                },
+                error: function(e) {
+                    alert('Terjadi kesalahan saat load data');
+                }
             })
+        }
+
+
+        $('#kategori').change(function(e) 
+        {
+            const id = $(this).val()
+            showDataCategory(id)
         })
-    </script>
+    })
+
+    setTimeout(function(){
+        $('.preloader').slideUp();
+    }, 3000);
+</script>
 
 

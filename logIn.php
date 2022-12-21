@@ -61,9 +61,14 @@ if (isset($_POST['login']))
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
-</head>
+    <!-- Preloader -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </head>
     
 <body>
+  <!-- Preloader -->
+  <div class="preloader"></div>
+
   <!-- Navbar -->
   <div class="container-fluid">
     <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
@@ -74,13 +79,13 @@ if (isset($_POST['login']))
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mt-3 mx-auto mb-2 mb-lg-0">
           <li class="nav-item mx-5">
-            <a class="nav-link active" aria-current="page" href="home.php">Home</a>
+            <a class="nav-link text-black active" aria-current="page" href="home.php">Home</a>
           </li>
           <li class="nav-item mx-5">
-            <a class="nav-link active" href="aboutUs.php">About Us</a>
+            <a class="nav-link text-black active" href="aboutUs.php">About Us</a>
           </li>
           <li class="nav-item mx-5">
-            <a class="nav-link active" href="logIn.php">Log In</a>
+            <a class="nav-link text-black active" href="logIn.php">Log In</a>
           </li>
         </ul>
       </div>
@@ -109,3 +114,9 @@ if (isset($_POST['login']))
     </div>
   </body>
 </html>
+
+<script>
+    setTimeout(function(){
+        $('.preloader').slideUp();
+    }, 3000);
+</script>
