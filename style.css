@@ -60,6 +60,7 @@ body {
 }
 option {
     background-color: transparent;
+    color: black;
 }
 
 #searchBtn {
@@ -100,6 +101,15 @@ button:hover {
     transform: scale(1.1);
     background-color: transparent;
     transition: .5s ease;
+}
+
+#uploadBtn {
+    width: 6em;
+    height: 2.25em;
+}
+#searchBtn {
+    width: 8em;
+    height: 2.25em;
 }
 
 .input {
@@ -166,6 +176,24 @@ button:hover {
     color: #fff;
 }
 
-#masuk {
-    color: #b4a5cf;
+table {
+    border-collapse: collapse;
+    border-bottom: 1px, #fff;
+    background: linear-gradient(to right, #444a6c 100%, #ece0f1 0%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+th, td {
+    border-bottom: 1px, #fff;
+}
+
+tr:hover {
+    background-color: linear-gradient(to right, #444a6c 0%, #ece0f1 100%);
+}
+
+.doc {
+    background: linear-gradient(to right, #444a6c 0%, #ece0f1 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }

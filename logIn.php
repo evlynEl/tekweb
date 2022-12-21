@@ -90,8 +90,8 @@ if (isset($_POST['login']))
     </nav>
   </div>
 
+  <!-- Body -->
   <div class="container-fluid p-5">
-    <!-- Landing -->
     <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
       <div class="col-lg-6 col-12 d-flex flex-column justify-content-center align-items-center">
         <h2 class="text-center animate__animated animate__zoomIn">WELCOME</h2>
