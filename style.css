@@ -196,7 +196,43 @@ tr:hover {
 }
 
 .doc {
-    background: linear-gradient(to right, #444a6c 0%, #ece0f1 50%);
+    background: linear-gradient(to right, #444a6c 100%, #ece0f1 0%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+figure{
+    width: 50%;
+    height: 50%;
+    transition: .5s ease;
+}
+
+figure:hover {
+    opacity: .5;
+}
+
+.caption {
+    background: linear-gradient(to right, #444a6c 100%, #ece0f1 0%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.account{
+    display: flex;
+}
+
+label{
+    display: inline-block;
+    background-color: indigo;
+    color: white;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+#file-chosen{
+    margin-left: 0.3rem;
+    font-family: sans-serif;
 }
