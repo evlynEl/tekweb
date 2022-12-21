@@ -122,8 +122,8 @@ if(isset($_POST['proses'])){
     <!-- Body -->
     <div class="container-fluid p-5">
         <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
-            <h3>Publish to the world</h3>
-            <p>Research paper, article, document, etc</p>
+            <h3 class="text-center">Publish to the world</h3>
+            <p class="text-center">Research paper, article, document, etc</p>
 
             <?=isset($msg) ? '<div class="alert alert-success">'.$msg.'</div>' : ''?>
 
@@ -171,8 +171,8 @@ if(isset($_POST['proses'])){
                     <br />
                     <div class="d-grid gap-2 col-3 mx-auto">
                         <!-- <button class="btn btn-outline-light" type="submit">Upload</button> -->
-                        <input type="submit" name="proses" value="Upload" class="btn btn-outline-light">
-                        <a class="btn btn-outline-light" href="home2.php">Back</a>
+                        <input type="submit" name="proses" value="Upload" class="btn btn-outline-light"><button>Upload</button>
+                        <a href="home2.php"><button class="btn btn-outline-light">Back</button></a>
                     </div>
                 </div>
             </div>
