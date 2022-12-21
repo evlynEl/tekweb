@@ -187,7 +187,7 @@ if(isset($_POST['proses'])){
 
     actualBtn.addEventListener('change', function(){
         fileChosen.textContent = this.files[0].name
-    });
+    })
 
 
     const actualBtn = document.getElementById('upload-btn');
@@ -196,48 +196,49 @@ if(isset($_POST['proses'])){
 
     actualBtn.addEventListener('change', function(){
         fileChosen.textContent = this.files[0].name
-    });
+    })
 
 
-    $(function() {
-        $('#kategori').change(function(e) 
+    $(function() 
         {
-            const id = $(this).val()
-            showDataCategory(id)
-        })
+            $('#kategori').change(function(e) 
+            {
+                const id = $(this).val()
+                showDataCategory(id)
+            })
 
 
-        $("#form-tambah").submit(function(e) 
-        {
-            e.preventDefault();
+            $("#form-tambah").submit(function(e) 
+            {
+                e.preventDefault();
 
-            const formData = $(this).serialize();
-            const id = $('#kategori').val()
+                const formData = $(this).serialize();
+                const id = $('#kategori').val()
 
-            $.ajax({
-                url: 'list_ajax.php',
-                type: 'POST',
-                data: formData + '&kategori=' + id + '&tambah_doc=true',
-                success: function(output) 
-                {
-                    if (output == -1)
-                        alert('Gagal diinput')
-
-                    else 
+                $.ajax({
+                    url: 'list_ajax.php',
+                    type: 'POST',
+                    data: formData + '&kategori=' + id + '&tambah_doc=true',
+                    success: function(output) 
                     {
-                        alert("Data berhasil diinput")
-                        showDataCategory(id)
+                        if (output == -1)
+                            alert('Gagal diinput')
 
-                        $("#form-tambah").trigger('reset')
+                        else 
+                        {
+                            alert("Data berhasil diinput")
+                            showDataCategory(id)
+
+                            $("#form-tambah").trigger('reset')
+                        }
+                    },
+                    error: function(e) 
+                    {
+                        alert('Terjadi kesalahan saat load data');
                     }
-                },
-                error: function(e) 
-                {
-                    alert('Terjadi kesalahan saat load data');
-                }
+                })
             })
         })
-    });
 
     setTimeout(function(){
         $('.preloader').slideUp();

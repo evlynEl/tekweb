@@ -129,6 +129,10 @@ button:hover {
     min-height: 80vh;
 }
 
+.landing-text {
+    animation-delay: 3.5s;
+}
+
 #landing h2 {
     font-size: 3em;
     background: linear-gradient(to right, #444a6c 0%, #ece0f1 100%);
