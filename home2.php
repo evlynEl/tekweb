@@ -111,7 +111,7 @@ $fetch_data = $fetch_data->fetch();
 
                     <div class="col-md-12 py-3">
                         <h3 class="text-white">Daftar Dokumen</h3>
-                        <table class="table table-bordered table-striped table-secondary">
+                        <!-- <table class="table table-bordered table-striped table-secondary">
                             <thead class="bg-dark ">
                                 <tr>
                                     <td >Penulis</td>
@@ -123,9 +123,45 @@ $fetch_data = $fetch_data->fetch();
                             <tbody id="output-ajax">
 
                             </tbody>
-                        </table>
-                    </div>
+                        </table> -->
+                        <table class="table table-bordered table-striped table-secondary">
+                            <thead class="bg-dark">
+                            <tr>
+                                <th>No</th>
+                                <th>ID Buku</th>
+                                <th>Penulis</th>
+                                <th>Judul</th>
+                                <th>File</th>
+                                <th>Kategori ID</th>
+                                <th>Rating</th>
+                                <th>Action</th>
+                            </tr>
                             
+                            <?php
+                                $data = mysqli_query($koneksi, "SELECT * FROM `documents` ORDER BY id ASC");
+                                $no = 1;
+                                while($b = mysqli_fetch_array($data)) {
+                            ?>
+
+                            <tr>
+                                <td><?php echo $no++ ?></td>
+                                <td><?php echo $b['id'] ?></td>
+                                <td><?php echo $b['penulis'] ?></td>
+                                <td><?php echo $b['judul'] ?></td>
+                                <td><?php echo $b['file'] ?></td>
+                                <td><?php echo $b['kategori_id'] ?></td>
+                                <td><?php echo $b['rating'] ?></td>
+
+                                <td>
+                                    
+                                </td>
+                            </tr>
+                    <?php
+                        }
+                    ?>
+                    </thead>
+                    </table>
+                    </div>  
                 </div> 
             </div> 
         </div>
