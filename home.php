@@ -13,7 +13,6 @@ include 'config.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find your interest here</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <!-- CSS Bootstrap -->
@@ -28,7 +27,7 @@ include 'config.php';
 <body>
     <div class="container-fluid">
       <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
-          <a class="navbar-brand">LOGO</a>
+          <a class="navbar-brand px-3">LOGO</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -84,39 +83,19 @@ include 'config.php';
         <table class="table table-bordered table-striped table-secondary">
           <thead class="bg-dark">
             <tr>
-                <th>No</th>
-                <th>ID Buku</th>
-                <th>Penulis</th>
-                <th>Judul</th>
-                <th>File</th>
-                <th>Kategori ID</th>
-                <th>Rating</th>
-                <th>Action</th>
-            </tr>
-            
-            <?php
-                $data = mysqli_query($koneksi, "SELECT * FROM `documents` ORDER BY id ASC");
-                $no = 1;
-                while($b = mysqli_fetch_array($data)) {
-            ?>
-
-            <tr>
-                <td><?php echo $no++ ?></td>
-                <td><?php echo $b['id'] ?></td>
-                <td><?php echo $b['penulis'] ?></td>
-                <td><?php echo $b['judul'] ?></td>
-                <td><?php echo $b['file'] ?></td>
-                <td><?php echo $b['kategori_id'] ?></td>
-                <td><?php echo $b['rating'] ?></td>
-
-                <td>
-                    
-                </td>
-            </tr>
-            <?php
-                }
-            ?>
+              <th>ID Buku</th>
+              <th>Penulis</th>
+              <th>Judul</th>
+              <th>File</th>
+              <th>Kategori ID</th>
+              <th>Rating</th>
+              <th>Action</th>
+            </tr>                                
           </thead>
+          <tbody id="output-ajax">
+                            
+
+          </tbody>
         </table>
       </div>
     </div>
