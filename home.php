@@ -34,7 +34,7 @@ include 'config.php';
     <!-- Navbar -->
     <div class="container-fluid">
       <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
-          <a class="navbar-brand px-3">LOGO</a>
+      <a class="navbar-brand"><img class="logo" src="asset/img/logo.png"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>

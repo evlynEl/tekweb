@@ -21,7 +21,7 @@ $fetch_data->execute([ $login_user ]);
 
 $fetch_data = $fetch_data->fetch();
 
-$koneksi = mysqli_connect("localhost","root","admin","db");
+$koneksi = mysqli_connect("localhost","root","","db");
 
 if(isset($_POST['proses'])){
     $direktori = "berkas/";
@@ -153,7 +153,7 @@ if(isset($_POST['proses'])){
                         </select> 
                     <!--upload file-->
                     <input type="file" id="upload-btn" name="NamaFile" hidden/>
-                    <label for="upload-btn"><button class="btn">Select Documents</button></label>
+                    <label for="upload-btn">Select Documents</label>
                     <br>
                     <span id="file-chosen">No file chosen</span>
                     <br>                               
@@ -170,15 +170,12 @@ if(isset($_POST['proses'])){
                         
                         </form> -->
                     
-                    <br />
-                    <div class="d-grid gap-2 col-3 mx-auto">
-                        <!-- <button class="btn btn-outline-light" type="submit">Upload</button> -->
-                        <input type="submit" name="proses" value="Upload" class="btn btn-outline-light"><button>Upload</button>
-                        <a href="home2.php"><button class="btn btn-outline-light">Back</button></a>
-                    </div>
-                </div>
+            <br>
+            <div class="d-grid gap-2 col-3 mx-auto">
+                <!-- <button class="btn btn-outline-light" type="submit">Upload</button> -->
+                <input type="submit" name="proses" value="Upload" class="btn btn-light">
+                <a href="home2.php"><button class="btn">Back</button></a>
             </div>
-        </div>
         </div>
     </body>
 </html>
@@ -190,31 +187,19 @@ if(isset($_POST['proses'])){
 
     actualBtn.addEventListener('change', function(){
         fileChosen.textContent = this.files[0].name
-    })
+    });
 
 
-    $(function() {   
-        const showDataCategory = (id) => 
-        {
-            $.ajax({
-                url: 'list_ajax.php',
-                type: 'POST',
-                data: 'kategori=' + id + '&get_ajax=true',
-                success: function(output) 
-                {
-                    if (output == -1)
-                        alert('Tidak ada data yang ditampilkan')
-                
+    const actualBtn = document.getElementById('upload-btn');
 
-                    else
-                        $('#output-ajax').html(output)
-                },
-                error: function(e) {
-                    alert('Terjadi kesalahan saat load data');
-                }
-            })
-        }
+    const fileChosen = document.getElementById('file-chosen');
 
+    actualBtn.addEventListener('change', function(){
+        fileChosen.textContent = this.files[0].name
+    });
+
+
+    $(function() {
         $('#kategori').change(function(e) 
         {
             const id = $(this).val()
@@ -252,7 +237,7 @@ if(isset($_POST['proses'])){
                 }
             })
         })
-    })
+    });
 
     setTimeout(function(){
         $('.preloader').slideUp();

@@ -3,7 +3,7 @@
 include 'config.php';
 
 $login_user = $_COOKIE['login_user'];
-$koneksi = mysqli_connect("localhost","root","admin","db");
+$koneksi = mysqli_connect("localhost","root","db");
 
 // if (!isset($_SESSION['login_user']))
 if (!isset($login_user))
@@ -16,7 +16,7 @@ $fetch_data->execute([ $login_user ]);
 
 
 if ($fetch_data->rowCount() == 0)
-    header('location: logout.php');
+    header('location: logOut.php');
 
 
 $fetch_data = $fetch_data->fetch();
@@ -79,7 +79,7 @@ $fetch_data = $fetch_data->fetch();
     <!-- Navbar -->
     <div class="container-fluid">
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
-            <a class="navbar-brand">LOGO</a>
+            <a class="navbar-brand"><img class="logo" src="asset/img/logo.png"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
