@@ -153,7 +153,11 @@ $fetch_data = $fetch_data->fetch();
                                 <td><?php echo $b['rating'] ?></td>
 
                                 <td>
-                                    
+                                <a href="dokumen-det.php?id=<?php echo $b['id']?>" 
+                                        class="btn btn-warning" title="Lihat Dokumen" style="box-shadow: 
+                                        4px 2px 2px #888888;">Open</a>
+                                        <!-- logo mata -->
+                                        <!-- <img src="../asset/pic/mata.jpeg"> -->
                                 </td>
                             </tr>
                     <?php
