@@ -66,13 +66,13 @@ $fetch_data = $fetch_data->fetch();
 <body>
     <!-- Navbar -->
     <div class="container-fluid">
-        <nav class="navbar navbar-dark navbar-expand-lg fixed-top mt-3">
+        <nav class="navbar navbar-dark navbar-expand-lg fixed-top">
             <a class="navbar-brand">LOGO</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <ul class="navbar-nav mt-3 mx-auto mb-2 mb-lg-0">
                     <li class="nav-item mx-5">
                         <a class="nav-link active" aria-current="page" href="home2.php">Home</a>
                     </li>

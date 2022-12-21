@@ -63,10 +63,6 @@ option {
     color: black;
 }
 
-#searchBtn {
-    background-color: white;
-}
-
 button {
     width: 7em;
     height: 2.5em;
