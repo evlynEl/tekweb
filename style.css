@@ -252,3 +252,15 @@ label{
 .preloader::before{
     animation-delay: .5s;
 }
+
+iframe {
+    opacity: 0.5;
+    transition: .5s ease;
+    transform: translate(-55px, 0px);
+    border-radius: 100px;
+}
+iframe:hover {
+    opacity: 1;
+    transform: translate(0%, 0px);
+    border-radius: 0px;
+}

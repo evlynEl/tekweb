@@ -1,3 +1,28 @@
+<?php
+
+include 'config.php';
+
+$login_user = $_COOKIE['login_user'];
+$koneksi = mysqli_connect("localhost","root","db");
+
+// if (!isset($_SESSION['login_user']))
+if (!isset($login_user))
+    header('location: logIn.php');
+
+
+$fetch_data = "SELECT id, username, email FROM `users` WHERE id = ?";
+$fetch_data = $con->prepare($fetch_data);
+$fetch_data->execute([ $login_user ]);
+
+
+if ($fetch_data->rowCount() == 0)
+    header('location: logout.php');
+
+
+$fetch_data = $fetch_data->fetch();
+
+?>
+
 <!DOCTYPE html>
 <html>
 
