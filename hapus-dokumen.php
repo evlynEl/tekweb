@@ -1,6 +1,6 @@
 <?php
 include "config.php";
-$koneksi = mysqli_connect("localhost","root","","db");
+$koneksi = mysqli_connect("localhost","root","db");
 
 $id = $_GET['id'];
 
