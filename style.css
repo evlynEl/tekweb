@@ -64,7 +64,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: .5s ease;
-    transform: scale(1.5);
+    transform: scale(1.1);
 }
 option {
     background-color: transparent;
@@ -234,6 +234,11 @@ label{
     border-radius: 0.3rem;
     cursor: pointer;
     margin-top: 1rem;
+    transition: .5s ease;
+}
+
+label:hover {
+    transform: scale(1.1);
 }
 
 #file-chosen{

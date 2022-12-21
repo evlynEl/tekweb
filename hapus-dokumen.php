@@ -1,6 +1,6 @@
 <?php
 include "config.php";
-$koneksi = mysqli_connect("localhost","root","db");
+$koneksi = mysqli_connect("localhost","db","root");
 
 $id = $_GET['id'];
 
@@ -14,5 +14,5 @@ mysqli_query($koneksi, "DELETE FROM documents WHERE id='$id'");
 ?>
 
  <div class="d-grid gap-2 col-3 mx-auto">
-    <a class="btn btn-outline-light" href="home2.php">Back</a>
+    <a href="home2.php"><button class="btn">Back</button></a>
 </div>

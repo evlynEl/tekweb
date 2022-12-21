@@ -21,7 +21,7 @@ $fetch_data->execute([ $login_user ]);
 
 $fetch_data = $fetch_data->fetch();
 
-$koneksi = mysqli_connect("localhost","root","","db");
+$koneksi = mysqli_connect("localhost","db","root");
 
 if(isset($_POST['proses'])){
     $direktori = "berkas/";
@@ -124,7 +124,7 @@ if(isset($_POST['proses'])){
     <!-- Body -->
     <div class="container-fluid p-5">
         <div class="row frosted m-5 align-items-center" id="landing" style="font-family:alexandria">
-            <h3 class="text-center">Publish to the world</h3>
+            <h3 class="text-center">Publish to the world!</h3>
             <p class="text-center">Research paper, article, document, etc</p>
 
             <?=isset($msg) ? '<div class="alert alert-success">'.$msg.'</div>' : ''?>
@@ -132,9 +132,9 @@ if(isset($_POST['proses'])){
             <div class="col-md-4" style="margin: auto;text-align:center">
                 <form method="post" id="form-tambah" enctype="multipart/form-data">
                     <p>Penulis</p>
-                        <input type="text" class="form-control" id="penulis" name="penulis" placeholder="Penulis"><br />
+                        <input type="text" class="form-control" id="penulis" name="penulis" placeholder="Penulis"><br>
                     <p>Judul</p>
-                        <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul"><br />
+                        <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul"><br>
                     <p>Kategori</p>
                         <select id="kategori" class="form-select">
                             <option value="">-- Pilih kategori: --</option>
@@ -160,20 +160,18 @@ if(isset($_POST['proses'])){
                 </form>
             </div>
             <br>
-                        <!-- Form terbaru -> desain pakai CSS dan langsung tampil nama file yg akan diupload -->
-                        <!-- <form action="" method="POST" enctype="multipart/form-data">                            
-                            <input type="file" id="upload-btn" name="NamaFile" hidden/>
-                            <label for="upload-btn">Select Documents</label>
-                            <br>
-                            <span id="file-chosen">No file chosen</span>
-                            <br>
-                        
-                        </form> -->
-                    
+            <!-- Form terbaru -> desain pakai CSS dan langsung tampil nama file yg akan diupload -->
+            <!-- <form action="" method="POST" enctype="multipart/form-data">                            
+                <input type="file" id="upload-btn" name="NamaFile" hidden/>
+                <label for="upload-btn">Select Documents</label>
+                <br>
+                <span id="file-chosen">No file chosen</span>
+                <br>
+            </form> -->  
             <br>
             <div class="d-grid gap-2 col-3 mx-auto">
                 <!-- <button class="btn btn-outline-light" type="submit">Upload</button> -->
-                <input type="submit" name="proses" value="Upload" class="btn btn-light">
+                <input type="submit" name="proses" value="Upload" class="btn btn-outline-dark">
                 <a href="home2.php"><button class="btn">Back</button></a>
             </div>
         </div>
@@ -190,17 +188,7 @@ if(isset($_POST['proses'])){
 
     actualBtn.addEventListener('change', function(){
         fileChosen.textContent = this.files[0].name
-    })
-
-
-    const actualBtn = document.getElementById('upload-btn');
-
-    const fileChosen = document.getElementById('file-chosen');
-
-    actualBtn.addEventListener('change', function(){
-        fileChosen.textContent = this.files[0].name
-    })
-
+    });
 
     // $(function() {
     //     $('#kategori').change(function(e) 
@@ -236,11 +224,11 @@ if(isset($_POST['proses'])){
     //             },
     //             error: function(e) 
     //             {
-    //                 alert('Terjadi kesalahan saat load data');
+    //                 alert('Terjadi kesalahan saat load data')
     //             }
     //         })
     //     })
-    // })
+    // });
 
     setTimeout(function(){
         $('.preloader').slideUp();
