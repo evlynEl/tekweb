@@ -74,13 +74,13 @@ $fetch_data = $fetch_data->fetch();
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mt-3 mx-auto mb-2 mb-lg-0">
                     <li class="nav-item mx-5">
-                        <a class="nav-link active" aria-current="page" href="home2.php">Home</a>
+                        <a class="nav-link text-black active" aria-current="page" href="home2.php">Home</a>
                     </li>
                     <li class="nav-item mx-5">
-                        <a class="nav-link active" href="aboutUs.php">About Us</a>
+                        <a class="nav-link text-black active" href="aboutUs.php">About Us</a>
                     </li>
                     <li class="nav-item mx-5">
-                        <a class="nav-link active" href="logIn.php">Log In</a>
+                        <a class="nav-link text-black active" href="logIn.php">Log In</a>
                     </li>
                     <li class="nav-item mx-5">
                         <select id="kategori" class="form-select" style="border: 0;">

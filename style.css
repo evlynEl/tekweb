@@ -39,16 +39,24 @@ body {
     backdrop-filter: blur(25px);
     transition: all .5s ease;
 }
+.navbar-brand {
+    transition: .5s ease;
+}
+.navbar-brand:hover {
+    transform: scale(1.5);
+}
+.nav-link {
+    color: black;
+}
 .nav-link:hover {
     background: linear-gradient(to right, #444a6c 0%, #ece0f1 50%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: .5s ease;
-    transform: scale(1.1);
+    transform: scale(1.5);
 }
 #kategori {
     background-color: transparent;
-    color: white;
     transition: all .5s ease;
 }
 #kategori:hover {
@@ -56,7 +64,7 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     transition: .5s ease;
-    transform: scale(1.1);
+    transform: scale(1.5);
 }
 option {
     background-color: transparent;
@@ -99,17 +107,16 @@ button:hover {
     transition: .5s ease;
 }
 
-#uploadBtn {
-    width: 6em;
-    height: 2.25em;
+.input {
+    border-radius: 30px !important;
 }
 #searchBtn {
     width: 8em;
     height: 2.25em;
 }
-
-.input {
-    border-radius: 30px !important;
+#uploadBtn {
+    width: 6em;
+    height: 2.25em;
 }
 
 .frosted {
